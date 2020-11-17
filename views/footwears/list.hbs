@@ -1,0 +1,15 @@
+ <div class="row row-pb-md">
+     {{#each footwears}}
+<div class="col-lg-3 mb-4 text-center" id="{{id}}">
+    <div class="product-entry border">
+        <a href="#" class="prod-img">
+            <img src="{{cover}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+        </a>
+        <div class="desc">
+            <h2><a href="#">{{name}}</a></h2>
+            <span class="price">${{price}}</span>
+        </div>
+    </div>
+</div>
+{{/each}}
+ </div>
