@@ -7,6 +7,14 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var footwearRouter = require('./routes/footwears');
+var loginRouter = require('./routes/user/login');
+var signupRouter = require('./routes/user/signup');
+var detailRouter = require('./routes/productdetail');
+
+var hbs = require('hbs');
+
+// register path to partials
+hbs.registerPartials(__dirname + '/views/partials');
 
 var app = express();
 
@@ -23,6 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);
+app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
+app.use('/footwears', detailRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,15 +1,30 @@
- <div class="row row-pb-md">
-     {{#each footwears}}
-<div class="col-lg-3 mb-4 text-center" id="{{id}}">
-    <div class="product-entry border">
-        <a href="#" class="prod-img">
-            <img src="{{cover}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
-        </a>
-        <div class="desc">
-            <h2><a href="#">{{name}}</a></h2>
-            <span class="price">${{price}}</span>
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                <h2>Best Sellers</h2>
+            </div>
+        </div>
+
+        <div class="row row-pb-md">
+            {{#each footwears}}
+            <div class="col-lg-3 mb-4 text-center" id="{{id}}">
+                <div class="product-entry border">
+                    <a href="/footwears/{{id}}" class="prod-img" method="get">
+                        <img src="{{cover}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">{{name}}</a></h2>
+                        <span class="price">${{price}}</span>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+            </div>
         </div>
     </div>
 </div>
-{{/each}}
- </div>

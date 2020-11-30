@@ -1,0 +1,35 @@
+{
+    "images": [
+        "https://lcdn.sportiva.com/pub/media/catalog/product/cache/85aaf6b7fae7099299cfca62d95aac7e/3/6/36d_999999_akyra_black_1_21_3.jpg"
+    ],
+    "name": "WOMEN'S BOOTS SHOES MACA",
+    "price": "68.00",
+    "size": ["35", "36", "37", "38", "39", "40"],
+    "width": ["M", "W"],
+    "description": {
+        "p": [
+            "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.",
+            "When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way."
+        ],
+        "li": ["The Big Oxmox advised her not to do so",
+            "Because there were thousands of bad Commas",
+            "Wild Question Marks and devious Semikoli",
+            "She packed her seven versalia",
+            "tial into the belt and made herself on the way."
+        ]
+    },
+
+    "manufacturer": {
+        "p": [
+            "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.",
+            "When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way."
+        ]
+    },
+    "review": [
+        "di commnet1",
+        "di commnet2",
+        "di commnet3",
+        "di commnet4"
+    ]
+
+}

@@ -1,0 +1,68 @@
+<!-- css files -->
+<link rel="stylesheet" href="/css-login/style-login.css" type="text/css" media="all" />
+<!-- Style-CSS -->
+<link rel="stylesheet" href="/css-login/font-awesome-login.css">
+
+
+{{!-- header --}}
+{{>header}}
+<!-- main -->
+
+<div class="container-fluid user">
+    <div class="user">
+
+        <a id="Signup" href="/signup">
+            <button id="SignupBtn">
+                <p>Signup</p>
+            </button>
+        </a>
+        <div class="header-w3l">
+            <h1 style="margin-left: 135px;">Online Login</h1>
+        </div>
+        <!--//header-->
+        <div class="main-content-agile">
+            <div class="sub-main-w3">
+                <form action="#" method="post">
+                    <div class="pom-agile">
+                        <input placeholder="E-mail" name="Name" class="user" type="email" required="">
+                        <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="pom-agile">
+                        <input placeholder="Password" name="Password" class="pass" type="password" required="">
+                        <span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="sub-w3l">
+                        <h6><a href="#">Forgot Password?</a></h6>
+                        <div class="right-w3l">
+                            <input type="submit" value="Login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--//main-->
+        <!--footer-->
+        <div class="footer">
+            <p>&copy; 2020 Online Login Form. All rights reserved</p>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{{!-- footer --}}
+{{>footer}}
+
+
+
+<script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>

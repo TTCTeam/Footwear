@@ -6,5 +6,4 @@ const footwearController = require('../controllers/footwearsController');
 router.get('/', footwearController.index);
 
 
-
 module.exports = router;
