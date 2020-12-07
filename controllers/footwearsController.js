@@ -18,6 +18,14 @@ exports.product = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
+
+    var searchName = "";
+    if (req.query.q != undefined) {
+        searchName = req.query.q;
+    }
+
+    filter.name = { $regex: searchName, $options: "$i" };
+
     const nPerPage = 6;
     let totalProduct = 0;
     console.log(filter);
@@ -36,13 +44,14 @@ exports.product = async(req, res, next) => {
     //pass data to view to display list of book
 
     totalProduct = await footwearModel.count(filter);
-    console.log(totalProduct);
+
     let pagination = {
-            page: pageNumber, // The current page the user is on
-            pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
-        }
-        //pass data to view to display list of book
-    res.render('footwears/list', { title: "Footwear", footwears: footwears, pagination });
+        page: pageNumber, // The current page the user is on
+        pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
+    }
+
+    //pass data to view to display list of book
+    res.render('footwears/list', { title: "All Product - Footwear", footwears, pagination });
 }
 
 exports.about = async(req, res, next) => {
@@ -58,6 +67,14 @@ exports.men = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
+
+    var searchName = "";
+    if (req.query.q != undefined) {
+        searchName = req.query.q;
+    }
+
+    filter.name = { $regex: searchName, $options: "$i" };
+
     const nPerPage = 6;
     let totalProduct = 0;
     console.log(filter);
