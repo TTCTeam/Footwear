@@ -16,6 +16,9 @@ var hbs = require('hbs');
 // register path to partials
 hbs.registerPartials(__dirname + '/views/partials');
 
+var paginate = require('handlebars-paginate');
+hbs.registerHelper('paginate', paginate);
+
 var app = express();
 
 // view engine setup

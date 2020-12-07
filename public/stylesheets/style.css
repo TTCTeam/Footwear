@@ -1,0 +1,11 @@
+.product-entry.border a {
+    overflow: hidden;
+}
+
+.product-entry.border a img {
+    transition: all 0.5s;
+}
+
+.product-entry.border a img:hover {
+    transform: scale(1.3);
+}

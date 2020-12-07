@@ -14,6 +14,21 @@ exports.index = async(req, res, next) => {
     //pass data to view to display list of book
     res.render('index', { title: "Footwear", footwears: footwears });
 }
+exports.product = async(req, res, next) => {
+    //Get footwear from model
+    const footwears = await footwearModel.list();
+
+    //footwears.cover_arr = [];
+    footwears.forEach(element => {
+        element.cover_arr = [];
+        element.cover_arr.push(element.images[0]);
+
+    });
+    console.log(footwears);
+
+    //pass data to view to display list of book
+    res.render('footwears/list', { title: "Footwear", footwears: footwears });
+}
 
 exports.about = async(req, res, next) => {
     res.render('about', { title: "About" });
@@ -25,9 +40,17 @@ exports.contact = async(req, res, next) => {
 }
 exports.men = async(req, res, next) => {
 
-    //Get footwear from model
-    const footwears = await footwearModel.list();
+    var pageNumber = req.query.page || 1;
+    //ten color brand style material price
+    const filter = {};
+    const nPerPage = 6;
+    let totalProduct = 0;
+    console.log(filter);
+    console.log(pageNumber);
+    console.log(nPerPage);
 
+    //Get footwear from model
+    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];
@@ -37,7 +60,14 @@ exports.men = async(req, res, next) => {
     console.log(footwears);
     //pass data to view to display list of book
 
-    res.render('gender', { title: "Men - Footwear", footwears, gender: "Men" });
+    totalProduct = await footwearModel.count();
+
+    let pagination = {
+        page: pageNumber, // The current page the user is on
+        pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
+    }
+
+    res.render('gender', { title: "Men - Footwear", footwears, gender: "Men", pagination });
 
 }
 exports.women = async(req, res, next) => {

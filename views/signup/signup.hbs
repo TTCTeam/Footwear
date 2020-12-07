@@ -1,47 +1,51 @@
-<head>
- <!-- css files -->
-    <link rel="stylesheet" href="/css-signup/style.css" type="text/css" media="all" />
-    <!-- Style-CSS -->
-    <link rel="stylesheet" href="/css-signup/font-awesome.css">
 
-</head>
-<body>
 {{>header}}
 
 
 <div class="container-fluid">
-    <div class="main-content-agile">
+    <div class="user">
+
+  <div class="main-content-agile">
         <div class="sub-main-w3">
             <div class="header-w3l">
                 <h1>SIGN UP</h1>
             </div>
-            <form action="#" method="post">
+            <form action="#" method="POST" onsubmit="return preSignUp()">
                 <div class="pom-agile">
-                    <input placeholder="Username" name="Name" class="user" type="text" required="">
+                    <input placeholder="Display name" id="display_name" name="displayname" class="user" type="text" required="">
                     <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="pom-agile">
-                    <input placeholder="Password" name="Password" class="pass" type="password" required="">
-                    <span class="icon2"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    <input placeholder="Username" id="username" name="username" class="user" type="text" required="">
+                    <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="pom-agile">
-                    <input placeholder="Re-type Password" name="RetypePass" class="pass" type="password" required="">
-                    <span class="icon2"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                </div>
-                <div class="pom-agile">
-                    <input placeholder="E-mail" name="Email" class="user" type="email" required="">
+                    <input placeholder="E-mail" id="email" name="email" class="user" type="email" required="">
                     <span class="icon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                 </div>
+                <div class="pom-agile">
+                    <input placeholder="Password" id="pasword" name="password" class="pass" type="password" required="">
+                    <span class="icon2"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                </div>
+                <div class="pom-agile">
+                    <input placeholder="Re-type Password"
+                    id="retype_pasword" name="retype_password" class="retypepass" type="password" required="">
+                    <span class="icon2"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                </div>
+                <div id="notif" style="color: red;">{{message}}</div>
 
                 <div class="sub-w3l">
-                    <h6><a href="./login.html">Have already an account?</a></h6>
+                    <h6><a href="./login">Have already an account?</a></h6>
                     <div class="right-w3l">
-                        <input type="submit" value="Sign up">
+                        <input type="submit"  value="Sign up">
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
+    </div>
+  
     <!--//main-->
     <!--footer-->
     <div class="footer">
@@ -54,4 +58,4 @@
 
  {{>footer}}
 
-</body>
+
