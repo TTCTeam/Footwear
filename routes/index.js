@@ -15,4 +15,5 @@ router.get('/checkout', footweawrController.checkout);
 router.get('/men', footweawrController.men);
 router.get('/women', footweawrController.women);
 router.get('/order-complete', footweawrController.ordercomplete);
+router.get('/footwears', footweawrController.product)
 module.exports = router;
