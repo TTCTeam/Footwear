@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,9 +8,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var footwearRouter = require('./routes/footwears');
-var loginRouter = require('./routes/user/login');
-var editRouter = require('./routes/user/edit');
-var signupRouter = require('./routes/user/signup');
 var detailRouter = require('./routes/productdetail');
 
 var hbs = require('hbs');
@@ -35,9 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);
-app.use('/login', loginRouter);
-app.use('/edit', editRouter);
-app.use('/signup', signupRouter);
+
 app.use('/footwears', detailRouter);
 
 

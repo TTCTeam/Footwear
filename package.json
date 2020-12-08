@@ -8,12 +8,15 @@
     "dependencies": {
         "cookie-parser": "~1.4.4",
         "debug": "~2.6.9",
+        "dotenv": "^8.2.0",
         "express": "~4.16.1",
+        "formidable": "^1.2.2",
         "handlebars-paginate": "^0.1.0",
         "hbs": "^4.1.1",
         "http-errors": "~1.6.3",
         "mongodb": "^3.6.3",
         "morgan": "~1.9.1",
+        "mv": "^2.1.1",
         "nodemailer": "^6.4.16",
         "nodemon": "^2.0.6"
     }
