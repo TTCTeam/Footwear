@@ -31,79 +31,164 @@
         <div class="row">
             <div class="col-lg-3 col-xl-3">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Brand</h3>
-                            <ul>
-                                <li><a href="#">Nike</a></li>
-                                <li><a href="#">Adidas</a></li>
-                                <li><a href="#">Merrel</a></li>
-                                <li><a href="#">Gucci</a></li>
-                                <li><a href="#">Skechers</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Size/Width</h3>
-                            <div class="block-26 mb-2">
-                                <h4>Size</h4>
+                    <form name="abc" action="/footwears">
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Brand</h3>
                                 <ul>
-                                    <li><a href="#">37</a></li>
-                                    <li><a href="#">38</a></li>
-                                    <li><a href="#">39</a></li>
-                                    <li><a href="#">40</a></li>
-                                    <li><a href="#">41</a></li>
-                                    <li><a href="#">42</a></li>
-                                    
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="brand" value="NIKE"
+                                                onchange="this.form.submit()">
+                                            <span>Nike</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="brand" value="ADIDAS"
+                                                onchange="this.form.submit()">
+                                            <span>Adidas</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="brand" value="MERREL"
+                                                onchange="this.form.submit()">
+                                            <span>Merrel</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="brand" value="GUCCI"
+                                                onchange="this.form.submit()">
+                                            <span>Gucci</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="brand" value="SKECHERS"
+                                                onchange="this.form.submit()">
+                                            <span>Skechers</span>
+                                        </label>
+                                    </li>
+
                                 </ul>
                             </div>
-                            <div class="block-26">
-                                <h4>Width</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Size/Width</h3>
+                                <div class="block-26 mb-2">
+                                    <h4>Size</h4>
+                                    <ul>
+                                        <li><a href="#">37</a></li>
+                                        <li><a href="#">38</a></li>
+                                        <li><a href="#">39</a></li>
+                                        <li><a href="#">40</a></li>
+                                        <li><a href="#">41</a></li>
+                                        <li><a href="#">42</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="block-26">
+                                    <h4>Width</h4>
+                                    <ul>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" method="POST" name="width" value="male"
+                                                    onchange="this.form.submit()">
+                                                <span>M</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" method="POST" name="width" value="female"
+                                                    onchange="this.form.submit()">
+                                                <span>W</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Style</h3>
                                 <ul>
-                                    <li><a href="#">M</a></li>
-                                    <li><a href="#">W</a></li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="style" value="slip-on"
+                                                onchange="this.form.submit()">
+                                            <span>Slip Ons</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="style" value="boot"
+                                                onchange="this.form.submit()">
+                                            <span>Boots</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="style" value="sandal"
+                                                onchange="this.form.submit()">
+                                            <span>Sandals</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="style" value="lace-up"
+                                                onchange="this.form.submit()">
+                                            <span>Lace Ups</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" method="POST" name="style" value="oxford"
+                                                onchange="this.form.submit()">
+                                            <span>Oxfords</span>
+                                        </label>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Style</h3>
-                            <ul>
-                                <li><a href="#">Slip Ons</a></li>
-                                <li><a href="#">Boots</a></li>
-                                <li><a href="#">Sandals</a></li>
-                                <li><a href="#">Lace Ups</a></li>
-                                <li><a href="#">Oxfords</a></li>
-                            </ul>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Colors</h3>
+                                <ul>
+                                    <li><input type="checkbox" method="POST" name="color" value="black"
+                                            onchange="this.form.submit()">Black</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="white"
+                                            onchange="this.form.submit()">White</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="blue"
+                                            onchange="this.form.submit()">Blue</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="red"
+                                            onchange="this.form.submit()">Red</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="green"
+                                            onchange="this.form.submit()">Green</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="grey"
+                                            onchange="this.form.submit()">Grey</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="orange"
+                                            onchange="this.form.submit()">Orange</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="cream"
+                                            onchange="this.form.submit()">Cream</li>
+                                    <li><input type="checkbox" method="POST" name="color" value="brown"
+                                            onchange="this.form.submit()">Brown</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Colors</h3>
-                            <ul>
-                                <li><a href="#">Black</a></li>
-                                <li><a href="#">White</a></li>
-                                <li><a href="#">Blue</a></li>
-                                <li><a href="#">Red</a></li>
-                                <li><a href="#">Green</a></li>
-                                <li><a href="#">Grey</a></li>
-                                <li><a href="#">Orange</a></li>
-                                <li><a href="#">Cream</a></li>
-                                <li><a href="#">Brown</a></li>
-                            </ul>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Material</h3>
+                                <ul>
+                                    <li><a href="#">Leather</a></li>
+                                    <li><a href="#">Suede</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Material</h3>
-                            <ul>
-                                <li><a href="#">Leather</a></li>
-                                <li><a href="#">Suede</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
@@ -123,7 +208,7 @@
                     </div>
                     {{/each}}
                 </div>
-              
+
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="block-27">
@@ -159,4 +244,3 @@
 
 
 {{>footer}}
-

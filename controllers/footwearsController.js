@@ -18,6 +18,7 @@ exports.product = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
+    
 
     var searchName = "";
     if (req.query.q != undefined) {
@@ -25,6 +26,17 @@ exports.product = async(req, res, next) => {
     }
 
     filter.name = { $regex: searchName, $options: "$i" };
+
+    if (req.query.brand != undefined) {
+        const brand=req.query.brand;
+        filter.brand=brand;
+    }
+
+    if (req.query.style != undefined) {
+        const style=req.query.style;
+        filter.style=style;
+    }
+    
 
     const nPerPage = 6;
     let totalProduct = 0;

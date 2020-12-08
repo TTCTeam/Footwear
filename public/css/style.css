@@ -43,6 +43,14 @@
     box-sizing: border-box;
 }
 
+label input[type="checkbox"] {
+    display: none;
+}
+
+li label{
+    cursor: pointer;
+}
+
 html {
     font-family: sans-serif;
     line-height: 1.15;
