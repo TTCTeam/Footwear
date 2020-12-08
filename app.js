@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var footwearRouter = require('./routes/footwears');
 var loginRouter = require('./routes/user/login');
+var editRouter = require('./routes/user/edit');
 var signupRouter = require('./routes/user/signup');
 var detailRouter = require('./routes/productdetail');
 
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);
 app.use('/login', loginRouter);
+app.use('/edit', editRouter);
 app.use('/signup', signupRouter);
 app.use('/footwears', detailRouter);
 

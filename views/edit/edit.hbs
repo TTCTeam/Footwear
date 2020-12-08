@@ -1,0 +1,81 @@
+{{>header}}
+
+<div class="container-fluid">
+    <p style="background-color: aquamarine; padding:20px; font-size:20px; margin-bottom:20px">Edit User Profile</p>
+</div>
+
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" onsubmit="return preUpdate()">
+        <div class="form-group">
+            <label for="name">Username</label>
+            <textarea class="form-control" name="username" rows="1" id="username">{{account.username}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <textarea class="form-control" name="fullname" rows="1" id="fullname">{{account.fullname}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input name="email" type="email" class="form-control" id="email" value={{account.email}}>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Telephone Number</label>
+            <input class="form-control" name="telephonenumber" rows="1" type="number"
+                id="telephonenumber">{{account.telephonenumber}}</input>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Age</label>
+            <input name="price" type="number" class="form-control" id="age" value={{account.age}}>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Address</label>
+            <textarea class="form-control" name="address" rows="1" id="address">{{account.address}}</textarea>
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="women"
+                            {{women}}>
+                        <label class="form-check-label" for="gridRadios1" style="margin-left: 15px;">
+                            Women
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="men" {{men}}>
+                        <label class="form-check-label" for="gridRadios2" style="margin-left: 15px;">
+                            Men
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Avatar</label>
+            {{#each product.images as | item i|}}
+            <div class="input {{i}}">
+                <input name="images{{i}}" type="text" class="form-control" id="ImageInput{{i}}"
+                    placeholder="Image {{i}}" value={{item}}>
+                <input name="imagesfile{{i}}" type="file" class="form-control" id="ImageInput{{i}}"
+                    placeholder="Image {{i}} " value={{item}}>
+            </div>
+            {{/each}}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="reset" class="btn btn-primary">Cancel</button>
+
+    </form>
+</div>
+
+
+{{>footer}}
