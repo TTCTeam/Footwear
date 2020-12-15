@@ -1,10 +1,12 @@
 const formidable = require('formidable');
 const fs = require('fs');
 const mv = require('mv');
+const bcrypt = require('bcrypt');
 const accountModel = require('../models/accountModel');
-
+const userServices = require('../models/userServices');
 exports.renderProfile = async(req, res, next) => {
-    const account = await accountModel.findByName('Ha Minh Cuong');
+    const id = req.params.id;
+    const account = await accountModel.findById(id);
     let men, women;
     if (account.gender == "male" || account.gender == "men") {
         men = "checked";
@@ -30,7 +32,7 @@ exports.updateProfile = async(req, res, next) => {
             });
             fields.avatar = '/images/users/' + fileName;
         }
-        const id = '5fcd998347acc317641c1bb8';
+        const id = req.params.id;
         accountModel.updateOne(fields, id).then(() => {
             accountModel.findById(id).then((account) => {
                 let men, women;
@@ -45,4 +47,37 @@ exports.updateProfile = async(req, res, next) => {
 
 
     });
+}
+
+exports.addUser = async(req, res, next) => {
+    const { displayname, username, email, password, retype_password } = req.body;
+
+    const newUser = {
+        username,
+        email,
+        password
+    }
+    newUser.fullname = displayname;
+    try {
+
+        const saltRounds = 18;
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const hash = bcrypt.hashSync(newUser.password, salt);
+        newUser.password = hash;
+        newUser.age = "2000";
+        newUser.telephone = "+84..";
+        newUser.gender = "";
+        newUser.address = "";
+        newUser.avatar = "/images/users/user.png";
+
+        console.log(newUser);
+
+        await userServices.addUser(newUser);
+        res.redirect("/users/login");
+    } catch (err) {
+        res.render('signup/signup', {
+            title: "Sign up",
+            err: "You can create an account right now. Try again later!!!."
+        });
+    }
 }

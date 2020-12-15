@@ -4,6 +4,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require("express-session");
+
+const passport = require('./passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,7 +32,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// Passport middlewares
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+//Pass req.user to res.locals
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
+//Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);

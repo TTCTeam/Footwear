@@ -3,7 +3,7 @@ function preSignUp() {
     const username = $('#username').val();
     const email = $('#email').val();
     const password = $('#password').val();
-    const retype_password = $('#retype_pasword').val();
+    const retype_password = $('#retype_password').val();
     var notif = document.getElementById("notif");
     console.log(displayame);
     console.log(username);
