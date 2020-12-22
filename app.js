@@ -13,6 +13,8 @@ var usersRouter = require('./routes/users');
 var footwearRouter = require('./routes/footwears');
 var detailRouter = require('./routes/productdetail');
 
+const usersApiRouter = require('./routes/api/user_api');
+
 var hbs = require('hbs');
 
 // register path to partials
@@ -20,7 +22,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 var paginate = require('handlebars-paginate');
 hbs.registerHelper('paginate', paginate);
-
+hbs.handlebars.registerHelper('paginateHelper', paginate.createPagination);
 var app = express();
 
 // view engine setup
@@ -47,7 +49,8 @@ app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);
 
 app.use('/footwears', detailRouter);
-
+//Route API
+app.use('/api/users', usersApiRouter);
 
 
 // catch 404 and forward to error handler

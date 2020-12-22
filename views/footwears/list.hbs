@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="bread"><span><a href="/">Home</a></span> / <span>All Products</span></p>
+                <p class="bread"><span><a href="/">Home</a></span> / <span id="category">{{category}}</span></p>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
                 <div class="breadcrumbs-img" style="background-image: url(images/cover-img-1.jpg);">
-                    <h2>All Product's</h2>
+                    <h2 >{{category}}'s</h2>
                 </div>
                 <div class="menu text-center">
                     <p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a
@@ -37,39 +37,33 @@
                                 <h3>Brand</h3>
                                 <ul>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="brand" value="NIKE"
-                                                onchange="this.form.submit()">
-                                            <span>Nike</span>
-                                        </label>
+                                        <input type="checkbox" name="brand" value="NIKE" onclick="replaceProducts('current')" >
+                                        Nike
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="brand" value="ADIDAS"
-                                                onchange="this.form.submit()">
-                                            <span>Adidas</span>
-                                        </label>
+                                        <input type="checkbox" name="brand" value="ADIDAS" onclick="replaceProducts('current')">
+                                        Adidas
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="brand" value="MERREL"
-                                                onchange="this.form.submit()">
-                                            <span>Merrel</span>
-                                        </label>
+                                        <input type="checkbox" name="brand" value="HERMES" onclick="replaceProducts('current')">
+                                        Hermes
+                                    </li>
+                                   
+                                    <li>
+                                        <input type="checkbox" name="brand" value="GUCCI" onclick="replaceProducts('current')">
+                                        Gucci
+                                    </li>
+                                     <li>
+                                        <input type="checkbox" name="brand" value="LOUIS VUITTON" onclick="replaceProducts('current')">
+                                       Louis Vuitton
+                                    </li>
+                                     <li>
+                                        <input type="checkbox" name="brand" value="MEREL" onclick="replaceProducts('current')">
+                                        Merrel
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="brand" value="GUCCI"
-                                                onchange="this.form.submit()">
-                                            <span>Gucci</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="brand" value="SKECHERS"
-                                                onchange="this.form.submit()">
-                                            <span>Skechers</span>
-                                        </label>
+                                        <input type="checkbox" name="brand" value="SKECHERS" onclick="replaceProducts('current')">
+                                        Skechers
                                     </li>
 
                                 </ul>
@@ -81,6 +75,8 @@
                                 <div class="block-26 mb-2">
                                     <h4>Size</h4>
                                     <ul>
+                                        <li><a href="#">35</a></li>
+                                        <li><a href="#">36</a></li>
                                         <li><a href="#">37</a></li>
                                         <li><a href="#">38</a></li>
                                         <li><a href="#">39</a></li>
@@ -94,18 +90,15 @@
                                     <h4>Width</h4>
                                     <ul>
                                         <li>
-                                            <label>
-                                                <input type="checkbox" method="POST" name="width" value="male"
-                                                    onchange="this.form.submit()">
-                                                <span>M</span>
-                                            </label>
+
+                                            <input type="checkbox" name="width" value="M" onclick="replaceProducts('current')">
+                                            M
                                         </li>
                                         <li>
-                                            <label>
-                                                <input type="checkbox" method="POST" name="width" value="female"
-                                                    onchange="this.form.submit()">
-                                                <span>W</span>
-                                            </label>
+
+                                            <input type="checkbox" name="width" value="W" onclick="replaceProducts('current')">
+                                            W
+
                                         </li>
                                     </ul>
                                 </div>
@@ -116,39 +109,34 @@
                                 <h3>Style</h3>
                                 <ul>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="style" value="slip-on"
-                                                onchange="this.form.submit()">
-                                            <span>Slip Ons</span>
-                                        </label>
+
+                                        <input type="checkbox" name="style" value="slip-on" onclick="replaceProducts('current')">
+                                        Slip Ons
+
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="style" value="boot"
-                                                onchange="this.form.submit()">
-                                            <span>Boots</span>
-                                        </label>
+
+                                        <input type="checkbox" name="style" value="boot" onclick="replaceProducts('current')">
+                                        Boots
+
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="style" value="sandal"
-                                                onchange="this.form.submit()">
-                                            <span>Sandals</span>
-                                        </label>
+
+                                        <input type="checkbox" name="style" value="sandal" onclick="replaceProducts('current')">
+                                        Sandals
+
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="style" value="lace-up"
-                                                onchange="this.form.submit()">
-                                            <span>Lace Ups</span>
-                                        </label>
+
+                                        <input type="checkbox" name="style" value="lace-up" onclick="replaceProducts('current')">
+                                        Lace Ups
+
                                     </li>
                                     <li>
-                                        <label>
-                                            <input type="checkbox" method="POST" name="style" value="oxford"
-                                                onchange="this.form.submit()">
-                                            <span>Oxfords</span>
-                                        </label>
+
+                                        <input type="checkbox" name="style" value="oxford" onclick="replaceProducts('current')">
+                                        Oxfords
+
                                     </li>
 
                                 </ul>
@@ -158,24 +146,15 @@
                             <div class="side border mb-1">
                                 <h3>Colors</h3>
                                 <ul>
-                                    <li><input type="checkbox" method="POST" name="color" value="black"
-                                            onchange="this.form.submit()">Black</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="white"
-                                            onchange="this.form.submit()">White</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="blue"
-                                            onchange="this.form.submit()">Blue</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="red"
-                                            onchange="this.form.submit()">Red</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="green"
-                                            onchange="this.form.submit()">Green</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="grey"
-                                            onchange="this.form.submit()">Grey</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="orange"
-                                            onchange="this.form.submit()">Orange</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="cream"
-                                            onchange="this.form.submit()">Cream</li>
-                                    <li><input type="checkbox" method="POST" name="color" value="brown"
-                                            onchange="this.form.submit()">Brown</li>
+                                    <li><input type="checkbox" name="color" value="black" onclick="replaceProducts('current')">Black</li>
+                                    <li><input type="checkbox" name="color" value="white" onclick="replaceProducts('current')">White</li>
+                                    <li><input type="checkbox" name="color" value="blue" onclick="replaceProducts('current')">Blue</li>
+                                    <li><input type="checkbox" name="color" value="red" onclick="replaceProducts('current')">Red</li>
+                                    <li><input type="checkbox" name="color" value="green" onclick="replaceProducts('current')">Green</li>
+                                    <li><input type="checkbox" name="color" value="grey" onclick="replaceProducts('current')">Grey</li>
+                                    <li><input type="checkbox" name="color" value="orange" onclick="replaceProducts('current')">Orange</li>
+                                    <li><input type="checkbox" name="color" value="cream" onclick="replaceProducts('current')">Cream</li>
+                                    <li><input type="checkbox" name="color" value="brown" onclick="replaceProducts('current')">Brown</li>
                                 </ul>
                             </div>
                         </div>
@@ -183,55 +162,50 @@
                             <div class="side border mb-1">
                                 <h3>Material</h3>
                                 <ul>
-                                    <li><a href="#">Leather</a></li>
-                                    <li><a href="#">Suede</a></li>
+                                    <li>
+                                        <input type="checkbox" name="material" value="leather" onclick="repl" onclick="replaceProducts('current')">
+                                        Leather
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="material" value="suede" onclick="replaceProducts('current')">Suede
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="/footwears">Xoá tất cả</a>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <ul>
+                                    <li>
+                                        <a href="/footwears">Xoá tất cả</a>
+                                    </li>
+                            </div>
+                        </div>
+                        
                     </form>
 
                 </div>
             </div>
             <div class="col-lg-9 col-xl-9">
-                <div class="row row-pb-md">
-                    {{#each footwears}}
-                    <div class="col-lg-4 mb-4 text-center" id="{{id}}">
-                        <div class="product-entry border">
-                            <a href="footwears/{{_id}}" method="get" class="prod-img">
-                                <img src="{{cover_arr}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
-                            </a>
-                            <div class="desc">
-                                <h2><a href="#">{{name}}</a></h2>
-                                <span class="price">{{price}} VND</span>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
+                {{>product}}
 
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 text-center" id="paging-nav">
                         <div class="block-27">
                             <ul>
-                                {{#paginate pagination type="first"}}
-                                <li {{#if disabled}}class="disabled" {{/if}}><a href="?page={{n}}">F</a></li>
-                                {{/paginate}}
-                                {{#paginate pagination type="previous"}}
-                                <li {{#if disabled}}class="disabled" {{/if}}><a href="?page={{n}}"><i
-                                            class="ion-ios-arrow-back"></i></a></li>
-                                {{/paginate}}
-                                {{#paginate pagination type="middle" limit="7"}}
-                                <li {{#if active}}class="active" {{/if}}><a href="?page={{n}}">{{n}}</a></li>
-                                {{/paginate}}
-                                {{#paginate pagination type="next"}}
-                                <li {{#if disabled}}class="disabled" {{/if}}><a href="?page={{n}}"><i
-                                            class="ion-ios-arrow-forward"></i></a></li>
-                                {{/paginate}}
-                                {{#paginate pagination type="last"}}
-                                <li {{#if disabled}}class="disabled" {{/if}}><a href="?page={{n}}">L</a></li>
-                                {{/paginate}}
+                                <li class="disabled"><a onclick="replaceProducts(1)">F</a></li>
 
+                                <li class="disabled"><a 
+                                        onclick="replaceProducts({{pagination.previousPage}})"><i
+                                            class="ion-ios-arrow-back"></i></a></li>
+                                {{#each pagination.paginate}}
+                                <li class="{{active}} page"><a  onclick="replaceProducts({{page}})">{{page}}</a>
+                                </li>
+                                {{/each}}
+                                <li class="disabled"><a  onclick="replaceProducts({{pagination.nextPage}})"><i
+                                            class="ion-ios-arrow-forward"></i></a></li>
+
+                                <li class="disabled"><a 
+                                        onclick="replaceProducts({{pagination.totalPage}})">L</a></li>
                             </ul>
                         </div>
                     </div>
@@ -245,3 +219,21 @@
 
 
 {{>footer}}
+
+<script type="text/x-handlebars" id="paging-nav-template">
+<div class="block-27" >
+    <ul>                               
+        <li class="disabled" ><a  onclick="replaceProducts(1)">F</a></li>
+        
+        <li class="disabled" ><a  onclick="replaceProducts(\{{pagination.previousPage}})"><i
+                    class="ion-ios-arrow-back"></i></a></li>
+        \{{#each pagination.paginate}}
+        <li class="\{{active}} page" ><a  onclick="replaceProducts(\{{page}})">\{{page}}</a></li>                            
+        \{{/each}}
+        <li class="disabled" ><a  onclick="replaceProducts(\{{pagination.nextPage}})"><i
+                    class="ion-ios-arrow-forward"></i></a></li>
+         
+        <li class="disabled" ><a  onclick="replaceProducts(\{{pagination.totalPage}})">L</a></li>                                                
+    </ul>
+</div>
+</script>

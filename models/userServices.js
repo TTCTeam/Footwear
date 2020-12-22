@@ -41,3 +41,11 @@ exports.findById = async(id) => {
     });
     return account;
 }
+
+exports.isUsernameExist = async(username) => {
+    const accountCollection = db().collection('Account');
+    const account = await accountCollection.findOne({
+        username: username
+    });
+    return (account == undefined) ? false : true;
+}

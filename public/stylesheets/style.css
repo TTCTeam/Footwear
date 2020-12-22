@@ -52,3 +52,11 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

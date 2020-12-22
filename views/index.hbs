@@ -13,21 +13,7 @@
             </div>
         </div>
 
-        <div class="row row-pb-md">
-            {{#each footwears}}
-            <div class="col-lg-3 mb-4 text-center" id="{{id}}">
-                <div class="product-entry border">
-                    <a href="footwears/{{_id}}" method="get" class="prod-img">
-                        <img src="{{cover_arr}}" class="img-fluid" alt="Image">
-                    </a>
-                    <div class="desc">
-                        <h2><a href="#">{{name}}</a></h2>
-                        <span class="price">{{price}} VND</span>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-        </div>
+      {{>product}}
         <div class="row">
             <div class="col-md-12 text-center">
                 <p><a href="/footwears" class="btn btn-primary btn-lg">Shop All Products</a></p>

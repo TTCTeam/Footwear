@@ -16,8 +16,9 @@
                     <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="pom-agile">
-                    <input placeholder="Username" id="username" name="username" class="user" type="text" required="">
+                    <input placeholder="Username" id="username" name="username" class="user" type="text" required="" onchange="checkExistUsername(this.value)">
                     <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <div id="username-info"></div> 
                 </div>
                 <div class="pom-agile">
                     <input placeholder="E-mail" id="email" name="email" class="user" type="email" required="">

@@ -1,5 +1,57 @@
 const footwearModel = require('../models/footwearModel');
 
+function loadPagination(pageNumber, limit, totalPage) {
+    let page = [];
+
+    let n = parseInt(pageNumber / limit);
+    //console.log(n);
+    let mid = (pageNumber % limit == 0) ? limit : (pageNumber - n * limit);
+    for (let i = 0; i < mid; i++) {
+        if (pageNumber % limit == 0) {
+            page.push((n - 1) * limit + 1 + i);
+        } else {
+            page.push(n * limit + 1 + i);
+        }
+
+
+    }
+    console.log(page);
+
+    if (pageNumber % limit != 0) {
+        for (let j = pageNumber - n * limit; j < limit; j++) {
+            if (n * limit + 1 + j > totalPage) break;
+            page.push(n * limit + 1 + j);
+
+        }
+    }
+
+
+    let active = [];
+    for (let k = 0; k < page.length; k++) {
+        active.push("disable");
+    }
+    console.log(active);
+
+    let index = page.indexOf(pageNumber);
+    console.log(index);
+    active[index] = "active";
+
+
+    let paginate = [];
+    let pagination = {};
+    for (let h = 0; h < page.length; h++) {
+        paginate[h] = {};
+        paginate[h].page = page[h];
+        paginate[h].active = active[h];
+    }
+
+    console.log(paginate);
+    pagination.paginate = paginate;
+    pagination.previousPage = (pageNumber == 1) ? 1 : pageNumber - 1;
+    pagination.nextPage = (pageNumber == totalPage) ? pageNumber : pageNumber + 1;
+    pagination.totalPage = totalPage;
+    return pagination;
+}
 exports.index = async(req, res, next) => {
     //Get footwear from model
     const footwears = await footwearModel.list();
@@ -10,7 +62,7 @@ exports.index = async(req, res, next) => {
         element.cover_arr.push(element.images[0]);
 
     });
-    console.log(footwears);
+
     //pass data to view to display list of book
     res.render('index', { title: "Footwear", footwears: footwears });
 }
@@ -18,7 +70,6 @@ exports.product = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
-    
 
     var searchName = "";
     if (req.query.q != undefined) {
@@ -27,23 +78,10 @@ exports.product = async(req, res, next) => {
 
     filter.name = { $regex: searchName, $options: "$i" };
 
-    if (req.query.brand != undefined) {
-        const brand=req.query.brand;
-        filter.brand=brand;
-    }
-
-    if (req.query.style != undefined) {
-        const style=req.query.style;
-        filter.style=style;
-    }
-    
-
     const nPerPage = 6;
-    let totalProduct = 0;
-    console.log(filter);
-    console.log(pageNumber);
-    console.log(nPerPage);
-
+    let totalProduct = await footwearModel.count(filter);
+    let totalPage = Math.ceil(totalProduct / nPerPage);
+    pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
     const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
     //footwears.cover_arr = [];
@@ -52,18 +90,13 @@ exports.product = async(req, res, next) => {
         element.cover_arr.push(element.images[0]);
 
     });
-    console.log(footwears);
-    //pass data to view to display list of book
 
-    totalProduct = await footwearModel.count(filter);
-
-    let pagination = {
-        page: pageNumber, // The current page the user is on
-        pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
-    }
+    var limit = (totalPage > 5) ? 5 : totalPage;
+    //console.log(limit);
+    let pagination = loadPagination(pageNumber, limit, totalPage);
 
     //pass data to view to display list of book
-    res.render('footwears/list', { title: "All Product - Footwear", footwears, pagination });
+    res.render('footwears/list', { title: "All Product - Footwear", footwears, category: "All products", pagination });
 }
 
 exports.about = async(req, res, next) => {
@@ -79,7 +112,7 @@ exports.men = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
-
+    filter.gender = "men";
     var searchName = "";
     if (req.query.q != undefined) {
         searchName = req.query.q;
@@ -88,11 +121,9 @@ exports.men = async(req, res, next) => {
     filter.name = { $regex: searchName, $options: "$i" };
 
     const nPerPage = 6;
-    let totalProduct = 0;
-    console.log(filter);
-    console.log(pageNumber);
-    console.log(nPerPage);
-
+    let totalProduct = await footwearModel.count(filter);
+    let totalPage = Math.ceil(totalProduct / nPerPage);
+    pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
     const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
     //footwears.cover_arr = [];
@@ -101,29 +132,32 @@ exports.men = async(req, res, next) => {
         element.cover_arr.push(element.images[0]);
 
     });
-    console.log(footwears);
-    //pass data to view to display list of book
 
-    totalProduct = await footwearModel.count(filter);
 
-    let pagination = {
-        page: pageNumber, // The current page the user is on
-        pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
-    }
+    var limit = (totalPage > 5) ? 5 : totalPage;
+    //console.log(limit);
 
-    res.render('gender', { title: "Men - Footwear", footwears, gender: "Men", pagination });
+    let pagination = loadPagination(pageNumber, limit, totalPage);
+
+    res.render('footwears/list', { title: "Men - Footwear", footwears, category: "Men", pagination });
 
 }
 exports.women = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
-    const nPerPage = 6;
-    let totalProduct = 0;
-    console.log(filter);
-    console.log(pageNumber);
-    console.log(nPerPage);
+    filter.gender = "women";
+    var searchName = "";
+    if (req.query.q != undefined) {
+        searchName = req.query.q;
+    }
 
+    filter.name = { $regex: searchName, $options: "$i" };
+
+    const nPerPage = 6;
+    let totalProduct = await footwearModel.count(filter);
+    let totalPage = Math.ceil(totalProduct / nPerPage);
+    pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
     const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
     //footwears.cover_arr = [];
@@ -132,17 +166,14 @@ exports.women = async(req, res, next) => {
         element.cover_arr.push(element.images[0]);
 
     });
-    console.log(footwears);
-    //pass data to view to display list of book
-    totalProduct = await footwearModel.count(filter);
 
-    let pagination = {
-        page: pageNumber, // The current page the user is on
-        pageCount: Math.ceil(totalProduct / nPerPage) // The total number of available pages
-    }
 
-    res.render('gender', { title: "Women - Footwear", footwears, gender: "Women", pagination });
+    var limit = (totalPage > 5) ? 5 : totalPage;
+    //console.log(limit);
 
+    let pagination = loadPagination(pageNumber, limit, totalPage);
+
+    res.render('footwears/list', { title: "Women - Footwear", footwears, category: "Women", pagination });
 }
 exports.cart = async(req, res, next) => {
     res.render('order/cart', { title: "Cart" })
