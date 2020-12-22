@@ -34,32 +34,48 @@ function checkExistUsername(username) {
 }
 
 function replaceProducts(page) {
+    let brand = [];
+    $('input[name="brand"]:checked').each(function() {
+        brand.push(this.value);
+    });
+    console.log(brand);
+    let color = [];
+    $('input[name="color"]:checked').each(function() {
+        color.push(this.value);
+    });
+    let style = [];
+    $('input[name="style"]:checked').each(function() {
+        style.push(this.value);
+    });
+    let material = [];
+    $('input[name="material"]:checked').each(function() {
+        material.push(this.value);
+    });
+    let width = [];
+    $('input[name="width"]:checked').each(function() {
+        width.push(this.value);
+    });
 
-    let color = document.querySelector('input[name="color"]:checked');
-    let style = document.querySelector('input[name="style"]:checked');
-    let brand = document.querySelector('input[name="brand"]:checked');
-    let material = document.querySelector('input[name="material"]:checked');
-    let width = document.querySelector('input[name="width"]:checked');
+
     let filter = {};
     if (color != null) {
-        color = color.value;
-        filter.color = color;
+        filter.color = { $in: color };
     }
     if (style != null) {
-        style = style.value;
-        filter.style = style;
+
+        filter.style = { $in: style };
     }
     if (brand != null) {
-        brand = brand.value;
-        filter.brand = brand;
+
+        filter.brand = { $in: brand };
     }
     if (material != null) {
-        material = material.value;
-        filter.material = material;
+
+        filter.material = { $in: material };
     }
     if (width != null) {
-        width = width.value;
-        filter.width = width;
+
+        filter.width = { $in: width };
     }
     console.log(filter);
 
