@@ -176,6 +176,8 @@ exports.women = async(req, res, next) => {
     res.render('footwears/list', { title: "Women - Footwear", footwears, category: "Women", pagination });
 }
 exports.cart = async(req, res, next) => {
+    var user = req.user;
+    console.log(user);
     res.render('order/cart', { title: "Cart" })
 }
 exports.checkout = async(req, res, next) => {
