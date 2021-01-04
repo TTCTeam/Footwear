@@ -55,7 +55,7 @@ function replaceProducts(page) {
     $('input[name="width"]:checked').each(function() {
         width.push(this.value);
     });
-
+    let sort = document.querySelector('input[name="sort"]:checked');
 
     let filter = {};
     if (color != null) {
@@ -77,6 +77,12 @@ function replaceProducts(page) {
 
         filter.width = { $in: width };
     }
+    if (sort != null) {
+        sort = parseInt(sort.value);
+    } else {
+        sort = 1;
+    }
+    console.log(sort);
     console.log(filter);
 
     let category = $('#category').html();
@@ -93,7 +99,7 @@ function replaceProducts(page) {
 
     //call server API to render products
     //đối số data truyền vào để gửi về server
-    $.getJSON('/api/users/paging', { page, category, filter }, function(data) {
+    $.getJSON('/api/users/paging', { page, category, filter, sort }, function(data) {
         // // compile the template
         let template = Handlebars.compile($('#products').html());
         // // execute the compiled template and print the output to the console
