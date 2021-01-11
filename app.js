@@ -14,6 +14,7 @@ var footwearRouter = require('./routes/footwears');
 var detailRouter = require('./routes/productdetail');
 
 const usersApiRouter = require('./routes/api/user_api');
+const orderApiRouter = require('./routes/api/order_api');
 
 var hbs = require('hbs');
 
@@ -49,8 +50,25 @@ app.use('/users', usersRouter);
 app.use('/footwears', footwearRouter);
 
 app.use('/footwears', detailRouter);
+
 //Route API
+
+function loggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        if (req.user.status == "active") {
+            console.log('Chua active');
+            res.redirect('/users/active');
+
+        } else {
+            return next();
+        }
+    } else {
+        res.redirect('/users/login');
+    }
+}
+
 app.use('/api/users', usersApiRouter);
+app.use('/api/order', loggedIn, orderApiRouter);
 
 
 // catch 404 and forward to error handler
@@ -68,5 +86,6 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 
 module.exports = app;

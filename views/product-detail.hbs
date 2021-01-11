@@ -11,7 +11,7 @@
 
 
 <div class="colorlib-product">
-    <div class="container"> 
+    <div class="container">
         <div class="row row-pb-lg product-detail-wrap">
             <div class="col-sm-8">
                 <div class="owl-carousel">
@@ -49,7 +49,7 @@
                             <h4>Size</h4>
                             <ul>
                                 {{#each product.size as | item |}}
-                                <li><a href="#">{{item}}</a></li>
+                                <li><input type="radio" name="size" value="{{item}}">{{item}}</li>
                                 {{/each}}
                             </ul>
                         </div>
@@ -57,29 +57,42 @@
                             <h4>Width</h4>
                             <ul>
                                 {{#each product.width as | item |}}
-                                <li><a href="#">{{item}}</a></li>
+                                <li><input type="radio" name="width" value="{{item}}">{{item}}</li>
                                 {{/each}}
                             </ul>
                         </div>
                     </div>
                     <div class="input-group mb-4">
                         <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field=""
+                                onclick="minusQuantity()">
                                 <i class="icon-minus2"></i>
                             </button>
                         </span>
                         <input type="number" id="quantity" name="quantity" class="form-control input-number" value="1"
                             min="1" max="100">
                         <span class="input-group-btn ml-1">
-                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field=""
+                                onclick="plusQuantity()">
                                 <i class="icon-plus2"></i>
                             </button>
                         </span>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <p class="addtocart"><a href="/cart" class="btn btn-primary btn-addtocart"><i
-                                        class="icon-shopping-cart"></i> Add to Cart</a></p>
+                            {{#if user}}
+                            <p class="addtocart">
+                                <a onclick="addToCart('{{product._id}}')" class="btn btn-primary btn-addtocart"><i
+                                        class="icon-shopping-cart"></i> Add to
+                                    Cart</a>
+                            </p>
+                             {{else}}
+                             <p class="addtocart">
+                                <a onclick="requestLogin()" class="btn btn-primary btn-addtocart"><i
+                                        class="icon-shopping-cart"></i> Add to
+                                    Cart</a>
+                            </p>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -113,13 +126,13 @@
                                 <div class="tab-pane border fade show active" id="pills-description" role="tabpanel"
                                     aria-labelledby="pills-description-tab">
                                     {{#each product.description.p as | item |}}
-                                        <p>{{item}}</p>
+                                    <p>{{item}}</p>
                                     {{/each}}
-                                    
+
                                     <ul>
-                                         {{#each product.description.li as | item |}}
+                                        {{#each product.description.li as | item |}}
                                         <li>{{item}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
 
@@ -129,150 +142,57 @@
                                     <p>{{item}}</p>
                                     {{/each}}
 
-                                    {{!--  <p>When she reached the first hills of the Italic Mountains, she had a last view
+                                    {{!-- <p>When she reached the first hills of the Italic Mountains, she had a last
+                                        view
                                         back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
                                         Village and the subline of her own road, the Line Lane.
-                                        Pityful a rethoric question ran over her cheek, then she continued her way.</p> --}}
+                                        Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                                    --}}
                                 </div>
 
                                 <div class="tab-pane border fade" id="pills-review" role="tabpanel"
                                     aria-labelledby="pills-review-tab">
+                                    <form method="post">
+                                        {{#if user}}
+                                        <input style="margin: 20px;" id="username" type="text" method="post"
+                                            name="username" class="form-control" placeholder="Username"
+                                            value={{user.username}} readonly>
+                                        {{else}}
+                                        <input style="margin: 20px;" id="username" type="text" method="post"
+                                            name="username" class="form-control" placeholder="Username" value="Guest">
+                                        {{/if}}
+                                        <input style="margin: 20px;" id="content" type="text" method="post"
+                                            name="content" class="form-control" placeholder="Content" value="Content">
+
+                                        <button style="margin: 20px" id="commentBtn" onclick="replaceComments(1)"
+                                            class="btn btn-primary text-center" type="submit"><i>Comment</i></button>
+                                    </form>
+
+                                    <h3 class="head">{{totalComment}} Reviews</h3>
+
+                                    {{>comment}}
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <h3 class="head">23 Reviews</h3>
-                                            <div class="review">
-                                                <div class="user-img" style="background-image: url(images/person1.jpg)">
-                                                </div>
-                                                <div class="desc">
-                                                    <h4>
-                                                        <span class="text-left">Jacob Webb</span>
-                                                        <span class="text-right">14 March 2018</span>
-                                                    </h4>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-half"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                        </span>
-                                                        <span class="text-right"><a href="#" class="reply"><i
-                                                                    class="icon-reply"></i></a></span>
-                                                    </p>
-                                                    <p>When she reached the first hills of the Italic Mountains, she had
-                                                        a last view back on the skyline of her hometown Bookmarksgrov
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="review">
-                                                <div class="user-img" style="background-image: url(images/person2.jpg)">
-                                                </div>
-                                                <div class="desc">
-                                                    <h4>
-                                                        <span class="text-left">Jacob Webb</span>
-                                                        <span class="text-right">14 March 2018</span>
-                                                    </h4>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-half"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                        </span>
-                                                        <span class="text-right"><a href="#" class="reply"><i
-                                                                    class="icon-reply"></i></a></span>
-                                                    </p>
-                                                    <p>When she reached the first hills of the Italic Mountains, she had
-                                                        a last view back on the skyline of her hometown Bookmarksgrov
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="review">
-                                                <div class="user-img" style="background-image: url(images/person3.jpg)">
-                                                </div>
-                                                <div class="desc">
-                                                    <h4>
-                                                        <span class="text-left">Jacob Webb</span>
-                                                        <span class="text-right">14 March 2018</span>
-                                                    </h4>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-half"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                        </span>
-                                                        <span class="text-right"><a href="#" class="reply"><i
-                                                                    class="icon-reply"></i></a></span>
-                                                    </p>
-                                                    <p>When she reached the first hills of the Italic Mountains, she had
-                                                        a last view back on the skyline of her hometown Bookmarksgrov
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="rating-wrap">
-                                                <h3 class="head">Give a Review</h3>
-                                                <div class="wrap">
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            (98%)
-                                                        </span>
-                                                        <span>20 Reviews</span>
-                                                    </p>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            (85%)
-                                                        </span>
-                                                        <span>10 Reviews</span>
-                                                    </p>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            (70%)
-                                                        </span>
-                                                        <span>5 Reviews</span>
-                                                    </p>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            (10%)
-                                                        </span>
-                                                        <span>0 Reviews</span>
-                                                    </p>
-                                                    <p class="star">
-                                                        <span>
-                                                            <i class="icon-star-full"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            <i class="icon-star-empty"></i>
-                                                            (0%)
-                                                        </span>
-                                                        <span>0 Reviews</span>
-                                                    </p>
-                                                </div>
+                                        <div class="col-md-12 text-center" id="paging-nav">
+                                            <div class="block-27">
+                                                <ul>
+                                                    <li class="disabled"><a onclick="replaceComments(1,{{product._id}})">F</a></li>
+
+                                                    <li class="disabled"><a
+                                                            onclick="replaceComments({{pagination.previousPage}},{{product._id}})"><i
+                                                                class="ion-ios-arrow-back"></i></a></li>
+                                                    {{#each pagination.paginate}}
+                                                    <li class="{{active}} page"><a
+                                                            onclick="replaceComments({{page}},{{product._id}})">{{page}}</a>
+                                                    </li>
+                                                    {{/each}}
+                                                    <li class="disabled"><a
+                                                            onclick="replaceComments({{pagination.nextPage}},{{product._id}})"><i
+                                                                class="ion-ios-arrow-forward"></i></a></li>
+
+                                                    <li class="disabled"><a
+                                                            onclick="replaceComments({{pagination.totalPage}},{{product._id}})">L</a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -285,4 +205,23 @@
         </div>
     </div>
 </div>
+
 {{>footer}}
+
+<script type="text/x-handlebars" id="paging-nav-template">
+<div class="block-27" >
+    <ul>                               
+        <li class="disabled" ><a  onclick="replaceComments(1,\{{product._id}})">F</a></li>
+        
+        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.previousPage}},\{{product._id}})"><i
+                    class="ion-ios-arrow-back"></i></a></li>
+        \{{#each pagination.paginate}}
+        <li class="\{{active}} page" ><a  onclick="replaceComments(\{{page}},\{{product._id}})">\{{page}}</a></li>                            
+        \{{/each}}
+        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.nextPage}},\{{product._id}})"><i
+                    class="ion-ios-arrow-forward"></i></a></li>
+         
+        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.totalPage}},\{{product._id}})">L</a></li>                                                
+    </ul>
+</div>
+</script>

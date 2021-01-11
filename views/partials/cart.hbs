@@ -1,0 +1,69 @@
+<div id="cart_list_items_template">
+    {{#each cart}}
+    <div class="product-cart d-flex" id="{{id}}">
+        <div class="one-forth">
+            <div class="product-img" style="background-image: url(images/item-6.jpg);">
+            </div>
+            <div class="display-tc">
+                <h3>{{name}}</h3>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">{{price}} VND</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1"
+                    min="1" max="100">
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">$120.00</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <a href="#" class="closed"></a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script type="text/x-handlebars" id="cart_list_items">
+    \{{#each cart}}
+    <div class="product-cart d-flex" id="\{{id}}">
+        <div class="one-forth">
+            <div class="product-img" style="background-image: url(images/item-6.jpg);">
+            </div>
+            <div class="display-tc">
+                <h3>\{{name}}</h3>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">\{{price}} VND</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1"
+                    min="1" max="100">
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">$120.00</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <a href="#" class="closed"></a>
+            </div>
+        </div>
+    </div>
+    \{{/each}}
+</script>

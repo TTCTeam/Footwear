@@ -44,7 +44,6 @@ function loadPagination(pageNumber, limit, totalPage) {
         paginate[h].page = page[h];
         paginate[h].active = active[h];
     }
-
     console.log(paginate);
     pagination.paginate = paginate;
     pagination.previousPage = (pageNumber == 1) ? 1 : pageNumber - 1;
@@ -94,7 +93,6 @@ exports.product = async(req, res, next) => {
     var limit = (totalPage > 5) ? 5 : totalPage;
     //console.log(limit);
     let pagination = loadPagination(pageNumber, limit, totalPage);
-
     //pass data to view to display list of book
     res.render('footwears/list', { title: "All Product - Footwear", footwears, category: "All products", pagination });
 }
