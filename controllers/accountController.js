@@ -60,7 +60,7 @@ exports.addUser = async(req, res, next) => {
     newUser.fullname = displayname;
     try {
 
-        const saltRounds = 18;
+        const saltRounds = 2;
         const salt = bcrypt.genSaltSync(saltRounds);
         const hash = bcrypt.hashSync(newUser.password, salt);
         newUser.password = hash;

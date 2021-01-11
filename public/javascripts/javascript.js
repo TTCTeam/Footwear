@@ -20,7 +20,7 @@ function preSignUp() {
 
 function checkExistUsername(username) {
     // call server api to check username availability
-    $.getJSON('/api/users/is-exist', { username }, function(data) {
+    $.getJSON('/api/users/is-exist', { username }, function (data) {
         if (data == true) {
 
             $('#username-info').addClass('error').removeClass('success').html('Username is aldready taken!');
@@ -35,24 +35,24 @@ function checkExistUsername(username) {
 
 function replaceProducts(page) {
     let brand = [];
-    $('input[name="brand"]:checked').each(function() {
+    $('input[name="brand"]:checked').each(function () {
         brand.push(this.value);
     });
     console.log(brand);
     let color = [];
-    $('input[name="color"]:checked').each(function() {
+    $('input[name="color"]:checked').each(function () {
         color.push(this.value);
     });
     let style = [];
-    $('input[name="style"]:checked').each(function() {
+    $('input[name="style"]:checked').each(function () {
         style.push(this.value);
     });
     let material = [];
-    $('input[name="material"]:checked').each(function() {
+    $('input[name="material"]:checked').each(function () {
         material.push(this.value);
     });
     let width = [];
-    $('input[name="width"]:checked').each(function() {
+    $('input[name="width"]:checked').each(function () {
         width.push(this.value);
     });
 
@@ -93,11 +93,12 @@ function replaceProducts(page) {
 
     //call server API to render products
     //đối số data truyền vào để gửi về server
-    $.getJSON('/api/users/paging', { page, category, filter }, function(data) {
+    $.getJSON('/api/users/paging', { page, category, filter }, function (data) {
         // // compile the template
         let template = Handlebars.compile($('#products').html());
         // // execute the compiled template and print the output to the console
         let products = data.footwears;
+        console.log(products);
         let product_html = template({ products });
         $('#product-list-template').html(product_html);
 
@@ -109,4 +110,64 @@ function replaceProducts(page) {
     });
 
 
+}
+
+function replaceCartItems() {
+    $.getJSON('/api/order/cart', {}, function (cart) {
+        // // compile the template
+        let template = Handlebars.compile($('#cart_list_items').html());
+        // // execute the compiled template and print the output to the console
+        console.log(cart);
+        let cart_html = template({ cart });
+        console.log(cart_html);
+        $('#cart_list_items_template').html(cart_html);
+
+    });
+}
+
+function minusQuantity() {
+    let value = document.getElementById("quantity").value - 0;
+    if (value > 1) {
+        value--;
+    }
+    document.getElementById("quantity").value = value;
+}
+
+function plusQuantity() {
+    let value = document.getElementById("quantity").value - 0;
+    if (value < 50) {
+        value++;
+    }
+    document.getElementById("quantity").value = value;
+}
+
+function addToCart(id) {
+    if (document.user == null) {
+        alert("Please log in to continue.");
+        return;
+    }
+    const size = $('input[name="size"]:checked');
+    const width = $('input[name="width"]:checked');
+    const quantity= document.getElementById("quantity").value;
+
+    if (size==null||width==null||quantity=="") {
+        alert("Please fill out all field.");
+        return;
+    }
+
+    console.log(id);
+    $.getJSON('/api/order/addcart', { id, size:size.val(), width:width.val(), quantity:quantity-0 }, function (result) {
+        console.log(result.count);
+        console.log(result.res);
+        $("span[name='num-of-cart']").each(function () {
+            this.innerText = result.count;
+        });
+
+        if (result.res == true) {
+            alert("Add to cart sucessfully.");
+        }
+        else {
+            alert("Add to cart failed.");
+        }
+    });
 }
