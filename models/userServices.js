@@ -2,6 +2,20 @@ const { ObjectID } = require('mongodb');
 const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
 
+exports.isCorrectPassword = async(password, id) => {
+    const accountCollection = db().collection('Account');
+    const account = await accountCollection.findOne({
+        _id: ObjectID(id)
+    });
+    if (account) {
+        const check = await bcrypt.compareSync(password, account.password);
+        if (check) {
+            return true;
+        }
+    }
+    return false;
+}
+
 exports.addUser = async(newUser) => {
     const accountCollection = db().collection('Account');
 
@@ -16,10 +30,14 @@ exports.checkCredential = async(usernameOrEmail, password) => {
     const accountCollection = db().collection('Account');
     let err = 1;
     const hasEmail = await accountCollection.findOne({
-        email: usernameOrEmail
+        email: usernameOrEmail,
+        type: "user",
+        status: { $in: ["active", "actived"] }
     });
     const hasUsername = await accountCollection.findOne({
-        username: usernameOrEmail
+        username: usernameOrEmail,
+        type: "user",
+        status: { $in: ["active", "actived"] }
     });
     let user = hasEmail || hasUsername;
     if (user) {

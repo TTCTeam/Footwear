@@ -19,7 +19,25 @@ const transporter = nodemailer.createTransport({
 });
 
 
+exports.updatePassword = async(req, res, next) => {
+    const { password, newpassword } = req.body;
+    const user = req.user;
+    let check = await userServices.isCorrectPassword(password, user._id);
+    const saltRounds = 5;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const password_hash = bcrypt.hashSync(newpassword, salt);
+    console.log(user);
+    console.log(password);
+    console.log(newpassword);
+    console.log(password_hash);
+    if (check) {
+        await accountModel.updatePassword(password_hash, user._id);
+        res.redirect('/users/login');
+    } else {
+        res.render('user/change_password', { title: "Admin Area | Change Pasowrd", message: "Wrong password.Please try again" })
+    }
 
+}
 
 exports.renderProfile = async(req, res, next) => {
     const id = req.params.id;
@@ -84,7 +102,10 @@ exports.addUser = async(req, res, next) => {
         newUser.gender = "";
         newUser.address = "";
         newUser.avatar = "/images/users/user.png";
-
+        newUser.type = "user";
+        newUser.status = "active";
+        newUser.code = 0;
+        newUser.time = new Date();
         console.log(newUser);
 
         await userServices.addUser(newUser);

@@ -12,11 +12,23 @@ function preSignUp() {
     console.log(retype_password);
     if (password != retype_password) {
         notif.innerHTML = "Your password and retype are not mach.";
-
         return false;
     }
     return true;
 };
+
+function checkValidPassword_Retype() {
+    const password = $('#newpassword').val();
+    const retype_password = $('#retypepassword').val();
+    var notif = document.getElementById("notif");
+    console.log(password);
+    console.log(retype_password);
+    if (password != retype_password) {
+        notif.innerHTML = "Your password and retype are not mach.";
+        return false;
+    }
+    return true;
+}
 
 function checkExistUsername(username) {
     // call server api to check username availability

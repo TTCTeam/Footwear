@@ -3,6 +3,15 @@ const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
 var assert = require('assert')
 
+exports.updatePassword = async(newpassword, id) => {
+    const productCollection = db().collection('Account');
+    await productCollection.updateOne({ _id: ObjectID(id) }, {
+        $set: {
+            password: newpassword
+        }
+    });
+}
+
 exports.updateStatus = async(id, status_string) => {
     const accountCollection = db().collection('Account');
     await accountCollection.updateOne({ _id: ObjectID(id) }, {

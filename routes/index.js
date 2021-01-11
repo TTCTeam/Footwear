@@ -1,9 +1,9 @@
 const passport = require('../passport');
-
 var express = require('express');
 var router = express.Router();
+
 const footweawrController = require('../controllers/footwearsController');
-const e = require('express');
+const accountController = require('../controllers/accountController');
 
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
@@ -27,4 +27,18 @@ router.get('/men', footweawrController.men);
 router.get('/women', footweawrController.women);
 router.get('/order-complete', footweawrController.ordercomplete);
 router.get('/footwears', footweawrController.product)
+
+router.get('/forgotpassword', function(req, res, next) {
+    res.render('user/forgotpassword', { title: 'Footwear | Forgot Password' });
+});
+
+router.get('/forgotpassword/auth', function(req, res, next) {
+    res.render('user/authenticate_resetpass', { title: 'Footwear | Authentication Account' });
+});
+
+router.get('/change-password', loggedIn, function(req, res, next) {
+    res.render('user/change_password', { title: 'Footwear | Change Password' });
+});
+
+router.post('/change-password', loggedIn, accountController.updatePassword);
 module.exports = router;
