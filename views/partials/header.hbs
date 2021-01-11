@@ -46,7 +46,8 @@
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
             {{#if user}}
-            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+            <li class="cart"><a href="/cart"><i class="icon-shopping-cart"></i> Cart [<span
+                  name="num-of-cart">0</span>]</a></li>
             {{/if}}
           </ul>
         </div>

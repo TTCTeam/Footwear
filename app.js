@@ -14,6 +14,7 @@ var footwearRouter = require('./routes/footwears');
 var detailRouter = require('./routes/productdetail');
 
 const usersApiRouter = require('./routes/api/user_api');
+const orderApiRouter = require('./routes/api/order_api');
 
 var hbs = require('hbs');
 
@@ -51,6 +52,7 @@ app.use('/footwears', footwearRouter);
 app.use('/footwears', detailRouter);
 //Route API
 app.use('/api/users', usersApiRouter);
+app.use('/api/order', orderApiRouter);
 
 
 // catch 404 and forward to error handler

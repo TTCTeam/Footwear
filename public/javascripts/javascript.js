@@ -55,7 +55,7 @@ function replaceProducts(page) {
     $('input[name="width"]:checked').each(function () {
         width.push(this.value);
     });
-    let sort = document.querySelector('input[name="sort"]:checked');
+
 
     let filter = {};
     if (color != null) {
@@ -77,12 +77,6 @@ function replaceProducts(page) {
 
         filter.width = { $in: width };
     }
-    if (sort != null) {
-        sort = parseInt(sort.value);
-    } else {
-        sort = 1;
-    }
-    console.log(sort);
     console.log(filter);
 
     let category = $('#category').html();
@@ -99,11 +93,13 @@ function replaceProducts(page) {
 
     //call server API to render products
     //đối số data truyền vào để gửi về server
+
     $.getJSON('/api/users/paging', { page, category, filter, sort }, function (data) {
         // // compile the template
         let template = Handlebars.compile($('#products').html());
         // // execute the compiled template and print the output to the console
         let products = data.footwears;
+        console.log(products);
         let product_html = template({ products });
         $('#product-list-template').html(product_html);
 
@@ -141,5 +137,63 @@ function replaceComments(page, productID) {
         let pagination = data.pagination;
         let paging_nav_html = template_nav_paging({ pagination });
         $('#paging-nav').html(paging_nav_html);
+
+function replaceCartItems() {
+    $.getJSON('/api/order/cart', {}, function (cart) {
+        // // compile the template
+        let template = Handlebars.compile($('#cart_list_items').html());
+        // // execute the compiled template and print the output to the console
+        console.log(cart);
+        let cart_html = template({ cart });
+        console.log(cart_html);
+        $('#cart_list_items_template').html(cart_html);
+
+    });
+}
+
+function minusQuantity() {
+    let value = document.getElementById("quantity").value - 0;
+    if (value > 1) {
+        value--;
+    }
+    document.getElementById("quantity").value = value;
+}
+
+function plusQuantity() {
+    let value = document.getElementById("quantity").value - 0;
+    if (value < 50) {
+        value++;
+    }
+    document.getElementById("quantity").value = value;
+}
+
+function addToCart(id) {
+    if (document.user == null) {
+        alert("Please log in to continue.");
+        return;
+    }
+    const size = $('input[name="size"]:checked');
+    const width = $('input[name="width"]:checked');
+    const quantity= document.getElementById("quantity").value;
+
+    if (size==null||width==null||quantity=="") {
+        alert("Please fill out all field.");
+        return;
+    }
+
+    console.log(id);
+    $.getJSON('/api/order/addcart', { id, size:size.val(), width:width.val(), quantity:quantity-0 }, function (result) {
+        console.log(result.count);
+        console.log(result.res);
+        $("span[name='num-of-cart']").each(function () {
+            this.innerText = result.count;
+        });
+
+        if (result.res == true) {
+            alert("Add to cart sucessfully.");
+        }
+        else {
+            alert("Add to cart failed.");
+        }
     });
 }

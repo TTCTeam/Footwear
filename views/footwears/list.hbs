@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col">
                 <div class="breadcrumbs-img" style="background-image: url(images/cover-img-1.jpg);">
-                    <h2>{{category}}'s</h2>
+                    <h2 >{{category}}'s</h2>
                 </div>
                 <div class="menu text-center">
                     <p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a
@@ -34,92 +34,36 @@
                     <form name="abc" action="/footwears">
                         <div class="col-sm-12">
                             <div class="side border mb-1">
-                                <h3>Sort by</h3>
-                                <ul>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" name="sort" value="1" id="sort1"
-                                                onclick="replaceProducts('current')">
-                                            <label class="form-check-label" for="sort1">
-                                                A - Z
-                                            </label>
-                                        </div>
-
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" name="sort" value="-1"
-                                                onclick="replaceProducts('current')" id="sort2">
-                                            <label class="form-check-label" for="sort2">
-                                                Z - A
-                                            </label>
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="side border mb-1">
                                 <h3>Brand</h3>
                                 <ul>
                                     <li>
-                                        <input type="checkbox" name="brand" value="NIKE"
-                                            onclick="replaceProducts('current')" id="brand1">
-                                        <label class="form-check-label" for="brand1">
-                                            Nike
-                                        </label>
+                                        <input type="checkbox" name="brand" value="NIKE" onclick="replaceProducts('current')" >
+                                        Nike
                                     </li>
                                     <li>
-                                        <input type="checkbox" name="brand" value="ADIDAS"
-                                            onclick="replaceProducts('current')" id="brand2">
-                                        <label class="form-check-label" for="brand2">
-                                            Adidas
-                                        </label>
-
+                                        <input type="checkbox" name="brand" value="ADIDAS" onclick="replaceProducts('current')">
+                                        Adidas
                                     </li>
                                     <li>
-                                        <input type="checkbox" name="brand" value="HERMES"
-                                            onclick="replaceProducts('current')" id="brand3">
-
-                                        <label class="form-check-label" for="brand3">
-                                            Hermes
-                                        </label>
+                                        <input type="checkbox" name="brand" value="HERMES" onclick="replaceProducts('current')">
+                                        Hermes
                                     </li>
-
+                                   
                                     <li>
-                                        <input type="checkbox" name="brand" value="GUCCI"
-                                            onclick="replaceProducts('current')" id="brand4">
-
-                                        <label class="form-check-label" for="brand4">
-                                            Gucci
-                                        </label>
+                                        <input type="checkbox" name="brand" value="GUCCI" onclick="replaceProducts('current')">
+                                        Gucci
                                     </li>
-                                    <li>
-                                        <input type="checkbox" name="brand" value="LOUIS VUITTON"
-                                            onclick="replaceProducts('current')" id="brand5">
-
-                                        <label class="form-check-label" for="brand5">
-                                            Louis Vuitton
-                                        </label>
+                                     <li>
+                                        <input type="checkbox" name="brand" value="LOUIS VUITTON" onclick="replaceProducts('current')">
+                                       Louis Vuitton
+                                    </li>
+                                     <li>
+                                        <input type="checkbox" name="brand" value="MEREL" onclick="replaceProducts('current')">
+                                        Merrel
                                     </li>
                                     <li>
-                                        <input type="checkbox" name="brand" value="MEREL"
-                                            onclick="replaceProducts('current')" id="brand6">
-
-                                        <label class="form-check-label" for="brand6">
-                                            Merrel
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="brand" value="SKECHERS"
-                                            onclick="replaceProducts('current')" id="brand7">
-
-                                        <label class="form-check-label" for="brand7">
-                                            Skechers
-                                        </label>
+                                        <input type="checkbox" name="brand" value="SKECHERS" onclick="replaceProducts('current')">
+                                        Skechers
                                     </li>
 
                                 </ul>
@@ -147,14 +91,12 @@
                                     <ul>
                                         <li>
 
-                                            <input type="checkbox" name="width" value="M"
-                                                onclick="replaceProducts('current')">
+                                            <input type="checkbox" name="width" value="M" onclick="replaceProducts('current')">
                                             M
                                         </li>
                                         <li>
 
-                                            <input type="checkbox" name="width" value="W"
-                                                onclick="replaceProducts('current')">
+                                            <input type="checkbox" name="width" value="W" onclick="replaceProducts('current')">
                                             W
 
                                         </li>
@@ -168,48 +110,33 @@
                                 <ul>
                                     <li>
 
-                                        <input type="checkbox" name="style" value="slip-on"
-                                            onclick="replaceProducts('current')" id="style1">
+                                        <input type="checkbox" name="style" value="slip-on" onclick="replaceProducts('current')">
+                                        Slip Ons
 
-                                        <label class="form-check-label" for="style1">
-                                            Slip Ons
-                                        </label>
                                     </li>
                                     <li>
 
-                                        <input type="checkbox" name="style" value="boot"
-                                            onclick="replaceProducts('current')" id="style2">
+                                        <input type="checkbox" name="style" value="boot" onclick="replaceProducts('current')">
+                                        Boots
 
-                                        <label class="form-check-label" for="style2">
-                                            Boots
-                                        </label>
                                     </li>
                                     <li>
 
-                                        <input type="checkbox" name="style" value="sandal"
-                                            onclick="replaceProducts('current')" id="style3">
+                                        <input type="checkbox" name="style" value="sandal" onclick="replaceProducts('current')">
+                                        Sandals
 
-                                        <label class="form-check-label" for="style3">
-                                            Sandals
-                                        </label>
                                     </li>
                                     <li>
 
-                                        <input type="checkbox" name="style" value="lace-up"
-                                            onclick="replaceProducts('current')" id="style4">
+                                        <input type="checkbox" name="style" value="lace-up" onclick="replaceProducts('current')">
+                                        Lace Ups
 
-                                        <label class="form-check-label" for="style4">
-                                            Lace Ups
-                                        </label>
                                     </li>
                                     <li>
 
-                                        <input type="checkbox" name="style" value="oxford"
-                                            onclick="replaceProducts('current')" id="style5">
+                                        <input type="checkbox" name="style" value="oxford" onclick="replaceProducts('current')">
+                                        Oxfords
 
-                                        <label class="form-check-label" for="style5">
-                                            Oxfords
-                                        </label>
                                     </li>
 
                                 </ul>
@@ -219,69 +146,15 @@
                             <div class="side border mb-1">
                                 <h3>Colors</h3>
                                 <ul>
-                                    <li><input type="checkbox" name="color" value="black"
-                                            onclick="replaceProducts('current')" id="color1">
-
-                                        <label class="form-check-label" for="color1">
-                                            Black
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="white"
-                                            onclick="replaceProducts('current')" id="color2">
-
-                                        <label class="form-check-label" for="color2">
-                                            White
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="blue"
-                                            onclick="replaceProducts('current')" id="color3">
-
-                                        <label class="form-check-label" for="color3">
-                                            Blue
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="red"
-                                            onclick="replaceProducts('current')" id="color4">
-
-                                        <label class="form-check-label" for="color4">
-                                            Red
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="green"
-                                            onclick="replaceProducts('current')" id="color5">
-
-                                        <label class="form-check-label" for="color5">
-                                            Green
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="grey"
-                                            onclick="replaceProducts('current')" id="color6">
-
-                                        <label class="form-check-label" for="color6">
-                                            Grey
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="orange"
-                                            onclick="replaceProducts('current')" id="color7">
-
-                                        <label class="form-check-label" for="color7">
-                                            Orange
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="cream"
-                                            onclick="replaceProducts('current')" id="color8">
-
-                                        <label class="form-check-label" for="color8">
-                                            Cream
-                                        </label>
-                                    </li>
-                                    <li><input type="checkbox" name="color" value="brown"
-                                            onclick="replaceProducts('current')" id="color9">
-
-                                        <label class="form-check-label" for="color9">
-                                            Brown
-                                        </label>
-                                    </li>
+                                    <li><input type="checkbox" name="color" value="black" onclick="replaceProducts('current')">Black</li>
+                                    <li><input type="checkbox" name="color" value="white" onclick="replaceProducts('current')">White</li>
+                                    <li><input type="checkbox" name="color" value="blue" onclick="replaceProducts('current')">Blue</li>
+                                    <li><input type="checkbox" name="color" value="red" onclick="replaceProducts('current')">Red</li>
+                                    <li><input type="checkbox" name="color" value="green" onclick="replaceProducts('current')">Green</li>
+                                    <li><input type="checkbox" name="color" value="grey" onclick="replaceProducts('current')">Grey</li>
+                                    <li><input type="checkbox" name="color" value="orange" onclick="replaceProducts('current')">Orange</li>
+                                    <li><input type="checkbox" name="color" value="cream" onclick="replaceProducts('current')">Cream</li>
+                                    <li><input type="checkbox" name="color" value="brown" onclick="replaceProducts('current')">Brown</li>
                                 </ul>
                             </div>
                         </div>
@@ -290,19 +163,11 @@
                                 <h3>Material</h3>
                                 <ul>
                                     <li>
-                                        <input type="checkbox" name="material" value="leather" onclick="repl"
-                                            onclick="replaceProducts('current')" id="material1">
-
-                                        <label class="form-check-label" for="material1">
-                                            Leather
-                                        </label>
+                                        <input type="checkbox" name="material" value="leather" onclick="repl" onclick="replaceProducts('current')">
+                                        Leather
                                     </li>
                                     <li>
-                                        <input type="checkbox" name="material" value="suede"
-                                            onclick="replaceProducts('current')" id="material2">
-                                        <label class="form-check-label" for="material2">
-                                            Suede
-                                        </label>
+                                        <input type="checkbox" name="material" value="suede" onclick="replaceProducts('current')">Suede
                                     </li>
                                 </ul>
                             </div>
@@ -315,7 +180,7 @@
                                     </li>
                             </div>
                         </div>
-
+                        
                     </form>
 
                 </div>
@@ -329,16 +194,18 @@
                             <ul>
                                 <li class="disabled"><a onclick="replaceProducts(1)">F</a></li>
 
-                                <li class="disabled"><a onclick="replaceProducts({{pagination.previousPage}})"><i
+                                <li class="disabled"><a 
+                                        onclick="replaceProducts({{pagination.previousPage}})"><i
                                             class="ion-ios-arrow-back"></i></a></li>
                                 {{#each pagination.paginate}}
-                                <li class="{{active}} page"><a onclick="replaceProducts({{page}})">{{page}}</a>
+                                <li class="{{active}} page"><a  onclick="replaceProducts({{page}})">{{page}}</a>
                                 </li>
                                 {{/each}}
-                                <li class="disabled"><a onclick="replaceProducts({{pagination.nextPage}})"><i
+                                <li class="disabled"><a  onclick="replaceProducts({{pagination.nextPage}})"><i
                                             class="ion-ios-arrow-forward"></i></a></li>
 
-                                <li class="disabled"><a onclick="replaceProducts({{pagination.totalPage}})">L</a></li>
+                                <li class="disabled"><a 
+                                        onclick="replaceProducts({{pagination.totalPage}})">L</a></li>
                             </ul>
                         </div>
                     </div>

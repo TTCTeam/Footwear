@@ -10,11 +10,7 @@ exports.productsPaging = async (req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = req.query.filter || {};
-    let sort = req.query.sort || 1;
-    sort = parseInt(sort);
     console.log(filter);
-    console.log("Gia tri sort nhan vao ne: ");
-    console.log(sort);
 
     var searchName = "";
     if (req.query.q != undefined) {
@@ -31,7 +27,7 @@ exports.productsPaging = async (req, res, next) => {
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     pageNumber = parseInt(pageNumber);
     //Get footwear from model
-    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage, sort);
+    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];

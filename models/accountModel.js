@@ -3,29 +3,7 @@ const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
 var assert = require('assert')
 
-exports.updateStatus = async(id, status_string) => {
-    const accountCollection = db().collection('Account');
-    await accountCollection.updateOne({ _id: ObjectID(id) }, {
-        $set: {
-            status: status_string
-        }
-    });
-    return await this.findById(id);
-}
 
-exports.updateCode = async(id, code, time) => {
-    const accountCollection = db().collection('Account');
-    await accountCollection.updateOne({ _id: ObjectID(id) }, {
-        $set: {
-            code: code,
-            time: time
-        }
-    });
-    const account = await accountCollection.findOne({
-        _id: ObjectID(id)
-    });
-    return account;
-}
 
 exports.list = async() => {
     const accountCollection = db().collection('Account');
