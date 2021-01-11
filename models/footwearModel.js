@@ -5,9 +5,11 @@ exports.list = async() => {
     return product;
 }
 
-exports.paging = async(filter, pageNumber, nPerPage) => {
+exports.paging = async(filter, pageNumber, nPerPage, sort) => {
 
-    const product = await db().collection('Procduct').find(filter)
+    console.log("Gia tr sort ne: ");
+    console.log(sort);
+    const product = await db().collection('Procduct').find(filter).sort({ name: sort })
         .limit(nPerPage)
         .skip(pageNumber > 0 ? ((pageNumber - 1) * nPerPage) : 0)
         .toArray();
