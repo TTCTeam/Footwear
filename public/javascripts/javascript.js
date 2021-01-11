@@ -20,7 +20,7 @@ function preSignUp() {
 
 function checkExistUsername(username) {
     // call server api to check username availability
-    $.getJSON('/api/users/is-exist', { username }, function(data) {
+    $.getJSON('/api/users/is-exist', { username }, function (data) {
         if (data == true) {
 
             $('#username-info').addClass('error').removeClass('success').html('Username is aldready taken!');
@@ -35,24 +35,24 @@ function checkExistUsername(username) {
 
 function replaceProducts(page) {
     let brand = [];
-    $('input[name="brand"]:checked').each(function() {
+    $('input[name="brand"]:checked').each(function () {
         brand.push(this.value);
     });
     console.log(brand);
     let color = [];
-    $('input[name="color"]:checked').each(function() {
+    $('input[name="color"]:checked').each(function () {
         color.push(this.value);
     });
     let style = [];
-    $('input[name="style"]:checked').each(function() {
+    $('input[name="style"]:checked').each(function () {
         style.push(this.value);
     });
     let material = [];
-    $('input[name="material"]:checked').each(function() {
+    $('input[name="material"]:checked').each(function () {
         material.push(this.value);
     });
     let width = [];
-    $('input[name="width"]:checked').each(function() {
+    $('input[name="width"]:checked').each(function () {
         width.push(this.value);
     });
     let sort = document.querySelector('input[name="sort"]:checked');
@@ -99,7 +99,7 @@ function replaceProducts(page) {
 
     //call server API to render products
     //đối số data truyền vào để gửi về server
-    $.getJSON('/api/users/paging', { page, category, filter, sort }, function(data) {
+    $.getJSON('/api/users/paging', { page, category, filter, sort }, function (data) {
         // // compile the template
         let template = Handlebars.compile($('#products').html());
         // // execute the compiled template and print the output to the console
@@ -115,4 +115,31 @@ function replaceProducts(page) {
     });
 
 
+}
+
+function replaceComments(page, productID) {
+
+    let filter = {};
+
+    filter.productID = productID;
+
+    if (page == "current") {
+        let page1 = $('.active.page a').html() || 1;
+        console.log(page1);
+        page = parseInt(page1);
+    }
+
+    $.getJSON('/api/users/pagingComment', { page, filter }, function (data) {
+        // // compile the template
+        let template = Handlebars.compile($('#comments').html());
+        // // execute the compiled template and print the output to the console
+        let comments = data.totalComment;
+        let comment_html = template({ comments });
+        $('#comment-list-template').html(comment_html);
+
+        let template_nav_paging = Handlebars.compile($('#paging-nav-template').html());
+        let pagination = data.pagination;
+        let paging_nav_html = template_nav_paging({ pagination });
+        $('#paging-nav').html(paging_nav_html);
+    });
 }
