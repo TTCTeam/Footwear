@@ -5,16 +5,6 @@ var router = express.Router();
 
 const accountController = require('../controllers/accountController');
 
-function loggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-
-        return next();
-
-    } else {
-        res.redirect('/users/login');
-    }
-}
-
 /* Login */
 router.get('/login', function(req, res, next) {
     res.render('login/login', { title: "Login" });
@@ -29,6 +19,16 @@ router.post("/login", passport.authenticate('local', {
 
 /* Sign Up */
 
+// create reusable transporter object using the default SMTP transport
+const transporter = nodemailer.createTransport({
+    port: 465, // true for 465, false for other ports
+    host: "smtp.gmail.com",
+    auth: {
+        user: 'ttc.coopit@gmail.com',
+        pass: '18344597',
+    },
+    secure: false,
+});
 
 /* GET home page. */
 router.get('/signup', function(req, res, next) {
@@ -46,7 +46,5 @@ router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect('/');
 });
-router.get('/active', loggedIn, accountController.active);
-router.post('/active', loggedIn, accountController.activeUser);
 
 module.exports = router;
