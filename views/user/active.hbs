@@ -1,0 +1,14 @@
+{{>header}}
+<div class="container">
+<form class="form-inline" style="margin: 100px;" method="POST">
+  <div><h2> Confirm your code:</h2></div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Your Code</label>
+    <input type="number" class="form-control" id="inputPassword2" placeholder="Confirm Code" name="code">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+</form>
+<div class="error">
+  {{message}}
+</div>
+</div>

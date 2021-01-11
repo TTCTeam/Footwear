@@ -64,24 +64,35 @@
                     </div>
                     <div class="input-group mb-4">
                         <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="" onclick="minusQuantity()">
+                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field=""
+                                onclick="minusQuantity()">
                                 <i class="icon-minus2"></i>
                             </button>
                         </span>
                         <input type="number" id="quantity" name="quantity" class="form-control input-number" value="1"
                             min="1" max="100">
                         <span class="input-group-btn ml-1">
-                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" onclick="plusQuantity()">
+                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field=""
+                                onclick="plusQuantity()">
                                 <i class="icon-plus2"></i>
                             </button>
                         </span>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
+                            {{#if user}}
                             <p class="addtocart">
-                                <a onclick="addToCart('{{product._id}}')"
-                                    class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to
-                                    Cart</a></p>
+                                <a onclick="addToCart('{{product._id}}')" class="btn btn-primary btn-addtocart"><i
+                                        class="icon-shopping-cart"></i> Add to
+                                    Cart</a>
+                            </p>
+                             {{else}}
+                             <p class="addtocart">
+                                <a onclick="requestLogin()" class="btn btn-primary btn-addtocart"><i
+                                        class="icon-shopping-cart"></i> Add to
+                                    Cart</a>
+                            </p>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

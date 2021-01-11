@@ -69,7 +69,7 @@ exports.product = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
-
+    const sort = 1;
     var searchName = "";
     if (req.query.q != undefined) {
         searchName = req.query.q;
@@ -82,7 +82,7 @@ exports.product = async(req, res, next) => {
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
-    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
+    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage, sort);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];
@@ -110,6 +110,7 @@ exports.men = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
+    const sort = 1;
     filter.gender = "men";
     var searchName = "";
     if (req.query.q != undefined) {
@@ -123,7 +124,7 @@ exports.men = async(req, res, next) => {
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
-    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
+    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage, sort);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];
@@ -144,6 +145,7 @@ exports.women = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
+    const sort = 1;
     filter.gender = "women";
     var searchName = "";
     if (req.query.q != undefined) {
@@ -157,7 +159,7 @@ exports.women = async(req, res, next) => {
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     //Get footwear from model
-    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage);
+    const footwears = await footwearModel.paging(filter, pageNumber, nPerPage, sort);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];
@@ -174,6 +176,8 @@ exports.women = async(req, res, next) => {
     res.render('footwears/list', { title: "Women - Footwear", footwears, category: "Women", pagination });
 }
 exports.cart = async(req, res, next) => {
+    var user = req.user;
+    console.log(user);
     res.render('order/cart', { title: "Cart" })
 }
 exports.checkout = async(req, res, next) => {
