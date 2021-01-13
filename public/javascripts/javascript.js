@@ -152,6 +152,8 @@ function replaceComments(page, productID) {
         let pagination = data.pagination;
         let paging_nav_html = template_nav_paging({ pagination });
         $('#paging-nav').html(paging_nav_html);
+    });
+}
 
 function replaceCartItems() {
     $.getJSON('/api/order/cart', {}, function (cart) {
