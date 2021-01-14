@@ -264,3 +264,19 @@ function addToCart(id) {
         }
     });
 }
+
+function removeFromCart(id) {
+    $.getJSON('/api/order/removecart', { id }, function (result) {
+        console.log(result);
+        $("span[name='num-of-cart']").each(function () {
+            this.innerText = result.count;
+        });
+        // // compile the template
+        let template = Handlebars.compile($('#cart_list_items').html());
+        // // execute the compiled template and print the output to the console
+        let carts = result.carts;
+        let cart_html = template({ carts });
+        console.log(cart_html);
+        $('#cart_list_items_template').html(cart_html);
+    });
+}
