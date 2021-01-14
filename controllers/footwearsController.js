@@ -1,4 +1,7 @@
 const footwearModel = require('../models/footwearModel');
+const cartModel = require('../models/cartModel');
+
+
 
 function loadPagination(pageNumber, limit, totalPage) {
     let page = [];
@@ -180,8 +183,10 @@ exports.women = async(req, res, next) => {
 }
 exports.cart = async(req, res, next) => {
     var user = req.user;
-    console.log(user);
-    res.render('order/cart', { title: "Cart" })
+    console.log(user._id);
+    var carts = await cartModel.getCartsByUserID(user._id);
+    console.log(carts);
+    res.render('order/cart', { title: "Cart", carts })
 }
 exports.checkout = async(req, res, next) => {
     res.render('order/checkout', { title: "Check out" })
