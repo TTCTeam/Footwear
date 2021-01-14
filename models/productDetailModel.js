@@ -41,3 +41,10 @@ exports.addNewComment = async (item) => {
         console.log('Add successful');
     });
 }
+
+exports.listRelatedProduct = async (filter) => {
+    const productCollection = db().collection('Procduct');
+    const product = await productCollection.find(filter).toArray();
+    //const products = product.filter(item => item.id !== id);
+    return product;
+}
