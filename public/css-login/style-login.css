@@ -353,7 +353,8 @@ span.icon2 {
     margin-right: 20px;
 }
 
-#SignupBtn {
+#SignupBtn,
+#continue {
     letter-spacing: 1px;
     padding-top: 12px;
     padding-bottom: 12px;

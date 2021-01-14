@@ -175,22 +175,22 @@
                                         <div class="col-md-12 text-center" id="paging-nav">
                                             <div class="block-27">
                                                 <ul>
-                                                    <li class="disabled"><a onclick="replaceComments(1,{{product._id}})">F</a></li>
+                                                    <li class="disabled"><a onclick="replaceComments('1','{{product._id}}')">F</a></li>
 
                                                     <li class="disabled"><a
-                                                            onclick="replaceComments({{pagination.previousPage}},{{product._id}})"><i
+                                                            onclick="replaceComments('{{pagination.previousPage}}','{{product._id}}')"><i
                                                                 class="ion-ios-arrow-back"></i></a></li>
                                                     {{#each pagination.paginate}}
                                                     <li class="{{active}} page"><a
-                                                            onclick="replaceComments({{page}},{{product._id}})">{{page}}</a>
+                                                            onclick="replaceComments('{{page}}','{{productID}}')">{{page}}</a>
                                                     </li>
                                                     {{/each}}
                                                     <li class="disabled"><a
-                                                            onclick="replaceComments({{pagination.nextPage}},{{product._id}})"><i
+                                                            onclick="replaceComments('{{pagination.nextPage}}','{{product._id}}')"><i
                                                                 class="ion-ios-arrow-forward"></i></a></li>
 
                                                     <li class="disabled"><a
-                                                            onclick="replaceComments({{pagination.totalPage}},{{product._id}})">L</a>
+                                                            onclick="replaceComments('{{pagination.totalPage}}','{{product._id}}')">L</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -211,17 +211,17 @@
 <script type="text/x-handlebars" id="paging-nav-template">
 <div class="block-27" >
     <ul>                               
-        <li class="disabled" ><a  onclick="replaceComments(1,\{{product._id}})">F</a></li>
+        <li class="disabled" ><a  onclick="replaceComments('1','\{{product._id}}'')">F</a></li>
         
-        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.previousPage}},\{{product._id}})"><i
+        <li class="disabled" ><a  onclick="replaceComments('\{{pagination.previousPage}}','\{{product._id}}')"><i
                     class="ion-ios-arrow-back"></i></a></li>
         \{{#each pagination.paginate}}
-        <li class="\{{active}} page" ><a  onclick="replaceComments(\{{page}},\{{product._id}})">\{{page}}</a></li>                            
+        <li class="\{{active}} page" ><a  onclick="replaceComments('\{{page}}','\{{productID}}')">\{{page}}</a></li>                            
         \{{/each}}
-        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.nextPage}},\{{product._id}})"><i
+        <li class="disabled" ><a  onclick="replaceComments('\{{pagination.nextPage}}','\{{product._id}}')"><i
                     class="ion-ios-arrow-forward"></i></a></li>
          
-        <li class="disabled" ><a  onclick="replaceComments(\{{pagination.totalPage}},\{{product._id}})">L</a></li>                                                
+        <li class="disabled" ><a  onclick="replaceComments('\{{pagination.totalPage}}','\{{product._id}}')">L</a></li>                                                
     </ul>
 </div>
 </script>

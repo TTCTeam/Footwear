@@ -2,6 +2,14 @@ const { ObjectID } = require('mongodb');
 const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
 
+exports.isEmailExist = async(email) => {
+    const accountCollection = db().collection('Account');
+    const account = await accountCollection.findOne({
+        email: email
+    });
+    return (account == undefined || account.status == "blocked") ? false : true;
+}
+
 exports.isCorrectPassword = async(password, id) => {
     const accountCollection = db().collection('Account');
     const account = await accountCollection.findOne({

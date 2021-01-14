@@ -1,7 +1,7 @@
 const { ObjectID } = require('mongodb');
 const productDetailModel = require('../models/productDetailModel');
 
-exports.index = async (req, res, next) => {
+exports.index = async(req, res, next) => {
     var pageNumber = req.query.page || 1;
     const id = req.params.id;
     const product = await productDetailModel.findById(id);
@@ -15,7 +15,10 @@ exports.index = async (req, res, next) => {
     const comments = await productDetailModel.listComment(filter, pageNumber, nPerPage);
     var limit = (totalPage > 5) ? 5 : totalPage;
     let pagination = loadPagination(pageNumber, limit, totalPage);
-
+    pagination.paginate.forEach(element => {
+        element.productID = id;
+    });
+    console.log(pagination);
     res.render('product-detail', { title: product.name, product, comments, totalComment, pagination });
 }
 
@@ -71,7 +74,7 @@ function loadPagination(pageNumber, limit, totalPage) {
     return pagination;
 }
 
-exports.addNewComment = async (req, res, next) => {
+exports.addNewComment = async(req, res, next) => {
     const id = req.params.id;
 
     const item = {

@@ -66,6 +66,14 @@ exports.findById = async(id) => {
     return product;
 }
 
+exports.findByEmail = async(email) => {
+    const productCollection = db().collection('Account');
+    const product = await productCollection.findOne({
+        email: email
+    });
+    return product;
+}
+
 exports.findByName = async(name) => {
 
     const productCollection = db().collection('Account');

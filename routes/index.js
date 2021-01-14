@@ -32,9 +32,13 @@ router.get('/forgotpassword', function(req, res, next) {
     res.render('user/forgotpassword', { title: 'Footwear | Forgot Password' });
 });
 
-router.get('/forgotpassword/auth', function(req, res, next) {
-    res.render('user/authenticate_resetpass', { title: 'Footwear | Authentication Account' });
-});
+router.post('/forgotpassword', accountController.resetPasswword);
+
+// router.get('/forgotpasswprd/auth', function(req, res, next) {
+//     res.render('user/authenticate_resetpass', { title: 'Footwear | Authentication Account' });
+// });
+
+// router.post('/forgotpasswprd/auth', accountController.resetPasswword);
 
 router.get('/change-password', loggedIn, function(req, res, next) {
     res.render('user/change_password', { title: 'Footwear | Change Password' });
