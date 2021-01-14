@@ -1,15 +1,25 @@
 const { ObjectID } = require('mongodb');
 const productDetailModel = require('../models/productDetailModel');
 
-exports.index = async(req, res, next) => {
+exports.index = async (req, res, next) => {
     var pageNumber = req.query.page || 1;
     const id = req.params.id;
     const product = await productDetailModel.findById(id);
     const filter = {};
+    const relatedFilter = {};
+    const secondRelatedFilter = {};
+    secondRelatedFilter.gender = product.gender;
     filter.productID = id;
-    console.log(filter);
+    relatedFilter.brand = product.brand;
     const totalComment = await productDetailModel.countComment(filter);
-    const nPerPage = 3;
+    const tempFootwears = await productDetailModel.listRelatedProduct(relatedFilter);
+    const footwears = tempFootwears.filter(item => item.name !== product.name);
+
+    footwears.forEach(element => {
+        element.cover_arr = [];
+        element.cover_arr.push(element.images[0]);
+    });
+    const nPerPage = 5;
     let totalPage = Math.ceil(totalComment / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     const comments = await productDetailModel.listComment(filter, pageNumber, nPerPage);
@@ -19,7 +29,7 @@ exports.index = async(req, res, next) => {
         element.productID = id;
     });
     console.log(pagination);
-    res.render('product-detail', { title: product.name, product, comments, totalComment, pagination });
+    res.render('product-detail', { title: product.name, product, comments, totalComment, pagination, footwears });
 }
 
 function loadPagination(pageNumber, limit, totalPage) {
@@ -74,7 +84,7 @@ function loadPagination(pageNumber, limit, totalPage) {
     return pagination;
 }
 
-exports.addNewComment = async(req, res, next) => {
+exports.addNewComment = async (req, res, next) => {
     const id = req.params.id;
 
     const item = {
@@ -86,4 +96,8 @@ exports.addNewComment = async(req, res, next) => {
 
     productDetailModel.addNewComment(item);
     res.redirect('/footwears');
+}
+
+exports.relatedProduct = async (req, res, next) => {
+
 }

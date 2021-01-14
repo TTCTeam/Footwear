@@ -86,8 +86,8 @@
                                         class="icon-shopping-cart"></i> Add to
                                     Cart</a>
                             </p>
-                             {{else}}
-                             <p class="addtocart">
+                            {{else}}
+                            <p class="addtocart">
                                 <a onclick="requestLogin()" class="btn btn-primary btn-addtocart"><i
                                         class="icon-shopping-cart"></i> Add to
                                     Cart</a>
@@ -175,7 +175,8 @@
                                         <div class="col-md-12 text-center" id="paging-nav">
                                             <div class="block-27">
                                                 <ul>
-                                                    <li class="disabled"><a onclick="replaceComments('1','{{product._id}}')">F</a></li>
+                                                    <li class="disabled"><a
+                                                            onclick="replaceComments('1','{{product._id}}')">F</a></li>
 
                                                     <li class="disabled"><a
                                                             onclick="replaceComments('{{pagination.previousPage}}','{{product._id}}')"><i
@@ -201,6 +202,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="colorlib-product">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                        <h2>Related Products</h2>
+                    </div>
+                </div>
+
+                {{>related_product}}
             </div>
         </div>
     </div>
