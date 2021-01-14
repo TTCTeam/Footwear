@@ -3,9 +3,12 @@ const fs = require('fs');
 const mv = require('mv');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
+const { randomInt } = require('crypto');
+
+const cloudinary = require('../cloudinary/index');
 const accountModel = require('../models/accountModel');
 const userServices = require('../models/userServices');
-const { randomInt } = require('crypto');
+
 
 // create reusable transporter object using the default SMTP transport
 const transporter = nodemailer.createTransport({
@@ -13,7 +16,7 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     auth: {
         user: 'ttc.coopit@gmail.com',
-        pass: '18344597',
+        pass: '18344597@hcmus',
     },
     secure: true,
 });
@@ -133,19 +136,16 @@ exports.renderProfile = async(req, res, next) => {
 
 exports.updateProfile = async(req, res, next) => {
     const form = formidable({ multiples: true });
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, async(err, fields, files) => {
         if (err) {
             next(err);
             return;
         }
         if (files.avatarfile && files.avatarfile.size > 0) {
-            var fileName = files.avatarfile.path.split('\\').pop() + '.' + files.avatarfile.name.split('.').pop();
-            console.log(fileName);
-            mv(files.avatarfile.path, process.env.USER_FOLDER_IMAGES + '\\' + fileName, function(error) {
-                if (error) throw error;
 
-            });
-            fields.avatar = '/images/users/' + fileName;
+            console.log(files.avatarfile.path);
+            var result = await accountModel.updateAvatar(files.avatarfile.path);
+            fields.avatar = result.url;
         }
         const id = req.params.id;
         accountModel.updateOne(fields, id).then(() => {

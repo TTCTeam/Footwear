@@ -38,9 +38,9 @@ router.get('/signup', function(req, res, next) {
 router.post("/signup", accountController.addUser);
 
 /* Edit Profile */
-router.get('/:id/edit', accountController.renderProfile);
+router.get('/:id/edit', loggedIn, accountController.renderProfile);
 
-router.post('/:id/edit', accountController.updateProfile);
+router.post('/:id/edit', loggedIn, accountController.updateProfile);
 
 router.get('/logout', function(req, res, next) {
     req.logout();

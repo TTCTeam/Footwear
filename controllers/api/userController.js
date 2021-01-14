@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     auth: {
         user: 'ttc.coopit@gmail.com',
-        pass: '18344597',
+        pass: '18344597@hcmus',
     },
     secure: true,
 });

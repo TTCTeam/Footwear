@@ -3,6 +3,16 @@ const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
 var assert = require('assert')
 
+const cloudinary = require('../cloudinary/index');
+
+exports.updateAvatar = async(image_path) => {
+    var uploaded = await cloudinary.uploader.upload(image_path, { folder: "footwear_images" }, function(error, result) {
+        console.log(result, error);
+    });
+
+    return uploaded;
+}
+
 exports.updatePassword = async(newpassword, id) => {
     const productCollection = db().collection('Account');
     await productCollection.updateOne({ _id: ObjectID(id) }, {
@@ -85,16 +95,31 @@ exports.findByName = async(name) => {
 
 exports.updateOne = async(account, id) => {
     const productCollection = db().collection('Account');
-    await productCollection.updateOne({ _id: ObjectID(id) }, {
-        $set: {
-            username: account.username,
-            fullname: account.fullname,
-            email: account.email,
-            telephone: account.telephone,
-            age: account.age,
-            address: account.address,
-            gender: account.gender,
-            avatar: account.avatar
-        }
-    });
+    if (account.avatar != undefined) {
+        await productCollection.updateOne({ _id: ObjectID(id) }, {
+            $set: {
+                username: account.username,
+                fullname: account.fullname,
+                email: account.email,
+                telephone: account.telephone,
+                age: account.age,
+                address: account.address,
+                gender: account.gender,
+                avatar: account.avatar
+            }
+        });
+    } else {
+        await productCollection.updateOne({ _id: ObjectID(id) }, {
+            $set: {
+                username: account.username,
+                fullname: account.fullname,
+                email: account.email,
+                telephone: account.telephone,
+                age: account.age,
+                address: account.address,
+                gender: account.gender
+            }
+        });
+    }
+
 }
