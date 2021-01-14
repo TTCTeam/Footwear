@@ -120,7 +120,7 @@ exports.productsPaging = async(req, res, next) => {
 
     filter.name = { $regex: searchName, $options: "$i" };
 
-    const nPerPage = 6;
+    const nPerPage = 9;
 
 
     let totalProduct = await footwearModel.count(filter);
@@ -199,7 +199,7 @@ exports.commentsPaging = async(req, res, next) => {
     const filter = req.query.filter || {};
 
     let totalComments = await productDetailModel.countComment(filter);
-    const nPerPage = 3;
+    const nPerPage = 5;
     let totalPage = Math.ceil(totalComments / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     pageNumber = parseInt(pageNumber);

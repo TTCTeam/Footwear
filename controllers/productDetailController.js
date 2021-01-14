@@ -19,7 +19,7 @@ exports.index = async (req, res, next) => {
         element.cover_arr = [];
         element.cover_arr.push(element.images[0]);
     });
-    const nPerPage = 3;
+    const nPerPage = 5;
     let totalPage = Math.ceil(totalComment / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
     const comments = await productDetailModel.listComment(filter, pageNumber, nPerPage);

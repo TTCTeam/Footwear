@@ -77,7 +77,7 @@ exports.product = async(req, res, next) => {
 
     filter.name = { $regex: searchName, $options: "$i" };
 
-    const nPerPage = 6;
+    const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
@@ -119,7 +119,7 @@ exports.men = async(req, res, next) => {
 
     filter.name = { $regex: searchName, $options: "$i" };
 
-    const nPerPage = 6;
+    const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
@@ -154,7 +154,7 @@ exports.women = async(req, res, next) => {
 
     filter.name = { $regex: searchName, $options: "$i" };
 
-    const nPerPage = 6;
+    const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
     let totalPage = Math.ceil(totalProduct / nPerPage);
     pageNumber = (pageNumber > totalPage) ? totalPage : pageNumber;
