@@ -238,7 +238,7 @@ function plusQuantity() {
 function requestLogin() {
     var result = confirm("Please log in to continue.");
     if (result) {
-        location.replace("/users/login")
+        location.replace("/users/login");
     }
 }
 

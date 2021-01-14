@@ -54,7 +54,7 @@ function loadPagination(pageNumber, limit, totalPage) {
 exports.index = async(req, res, next) => {
     //Get footwear from model
     const footwears = await footwearModel.list();
-
+    console.log(footwears);
     //footwears.cover_arr = [];
     footwears.forEach(element => {
         element.cover_arr = [];
@@ -76,6 +76,7 @@ exports.product = async(req, res, next) => {
     }
 
     filter.name = { $regex: searchName, $options: "$i" };
+    filter.delete = false;
 
     const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
@@ -118,6 +119,7 @@ exports.men = async(req, res, next) => {
     }
 
     filter.name = { $regex: searchName, $options: "$i" };
+    filter.delete = false;
 
     const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
@@ -153,6 +155,7 @@ exports.women = async(req, res, next) => {
     }
 
     filter.name = { $regex: searchName, $options: "$i" };
+    filter.delete = false;
 
     const nPerPage = 9;
     let totalProduct = await footwearModel.count(filter);
