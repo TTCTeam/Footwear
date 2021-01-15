@@ -48,12 +48,15 @@ exports.checkCredential = async(usernameOrEmail, password) => {
         status: { $in: ["active", "actived"] }
     });
     let user = hasEmail || hasUsername;
+    console.log("user");
+    console.log(user);
     if (user) {
         const check = await bcrypt.compareSync(password, user.password);
+        console.log(check);
         if (!check) {
-            err = 0;
+            return err = 0;
         } else if (user.status == "blocked") {
-            err = -1;
+            return err = -1;
         }
     }
     return user;
