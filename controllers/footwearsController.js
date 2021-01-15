@@ -1,5 +1,5 @@
 const footwearModel = require('../models/footwearModel');
-const cartModel = require('../models/cartModel');
+
 
 
 
@@ -54,7 +54,7 @@ function loadPagination(pageNumber, limit, totalPage) {
     pagination.totalPage = totalPage;
     return pagination;
 }
-exports.index = async(req, res, next) => {
+exports.index = async (req, res, next) => {
     //Get footwear from model
     const footwears = await footwearModel.listBestSeller();
     console.log(footwears);
@@ -68,7 +68,7 @@ exports.index = async(req, res, next) => {
     //pass data to view to display list of book
     res.render('index', { title: "Footwear", footwears: footwears });
 }
-exports.product = async(req, res, next) => {
+exports.product = async (req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
@@ -101,15 +101,15 @@ exports.product = async(req, res, next) => {
     res.render('footwears/list', { title: "All Product - Footwear", footwears, category: "All products", pagination });
 }
 
-exports.about = async(req, res, next) => {
+exports.about = async (req, res, next) => {
     res.render('about', { title: "About" });
 
 }
-exports.contact = async(req, res, next) => {
+exports.contact = async (req, res, next) => {
     res.render('contact', { title: "Footwear - Contact" });
 
 }
-exports.men = async(req, res, next) => {
+exports.men = async (req, res, next) => {
 
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
@@ -146,7 +146,7 @@ exports.men = async(req, res, next) => {
     res.render('footwears/list', { title: "Men - Footwear", footwears, category: "Men", pagination });
 
 }
-exports.women = async(req, res, next) => {
+exports.women = async (req, res, next) => {
     var pageNumber = req.query.page || 1;
     //ten color brand style material price
     const filter = {};
@@ -181,16 +181,18 @@ exports.women = async(req, res, next) => {
 
     res.render('footwears/list', { title: "Women - Footwear", footwears, category: "Women", pagination });
 }
-exports.cart = async(req, res, next) => {
-    var user = req.user;
-    console.log(user._id);
-    var carts = await cartModel.getCartsByUserID(user._id);
-    console.log(carts);
-    res.render('order/cart', { title: "Cart", carts })
-}
-exports.checkout = async(req, res, next) => {
-    res.render('order/checkout', { title: "Check out" })
-}
-exports.ordercomplete = async(req, res, next) => {
-    res.render('order/order-complete', { title: "Order Complete" })
-}
+
+// exports.cart = async (req, res, next) => {
+//     var user = req.user;
+//     console.log(user._id);
+//     var { carts, subtotal } = await orderModel.getCartsByUserID(user._id);
+//     console.log(carts);
+//     const total = subtotal;
+//     res.render('order/cart', { title: "Cart", carts, subtotal, total })
+// }
+// exports.checkout = async (req, res, next) => {
+//     res.render('order/checkout', { title: "Check out" })
+// }
+// exports.ordercomplete = async (req, res, next) => {
+//     res.render('order/order-complete', { title: "Order Complete" })
+// }

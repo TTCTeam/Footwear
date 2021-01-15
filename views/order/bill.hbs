@@ -1,0 +1,117 @@
+{{>header}}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="bread"><span><a href="index.html">Home</a></span> / <span>Shopping Cart</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row row-pb-lg">
+            <div class="col-md-10 offset-md-1">
+                <div class="process-wrap">
+                    <a href="/order/bill/0">
+                        <div class="process text-center {{status.preparing}}">
+                            <p><span>01</span></p>
+                            <h3>Preparing</h3>
+                        </div>
+                    </a>
+                    <a href="/order/bill/1">
+                        <div class="process text-center {{status.delivering}}">
+                            <p><span>02</span></p>
+                            <h3>Delivering</h3>
+                        </div>
+                    </a>
+                    <a href="/order/bill/2">
+                        <div class="process text-center {{status.delivered}}">
+                            <p><span>03</span></p>
+                            <h3>Delivered</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row row-pb-lg">
+            <div class="col-md-12">
+                <div class="product-name d-flex">
+                    <div class="one-forth text-left px-4">
+                        <span>Product Details</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Size</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Price</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Quantity</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Total</span>
+                    </div>
+
+                </div>
+
+                {{>bill}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                <h2>Related Products</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Minam Meaghan</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Men's Taja Commissioner</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Russ Men's Sneakers</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>footer}}

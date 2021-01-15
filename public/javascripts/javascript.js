@@ -23,7 +23,7 @@ function replaceInputCode() {
     let input_email = document.getElementById('input-email');
     let input_code = document.getElementById('input-code');
     if (input_email.style.display != 'none') {
-        $.getJSON('/api/users/is-exist-email', { email }, function(data) {
+        $.getJSON('/api/users/is-exist-email', { email }, function (data) {
             if (data == true) {
                 console.log(data);
                 input_email.style.display = 'none';
@@ -33,7 +33,7 @@ function replaceInputCode() {
                 $(":submit").attr("disabled", true);
             }
         });
-        $.getJSON('/api/users/sendverifycode', { email }, function(data) {
+        $.getJSON('/api/users/sendverifycode', { email }, function (data) {
 
         });
     } else {
@@ -57,7 +57,7 @@ function checkValidPassword_Retype() {
 
 function checkExistUsername(username) {
     // call server api to check username availability
-    $.getJSON('/api/users/is-exist', { username }, function(data) {
+    $.getJSON('/api/users/is-exist', { username }, function (data) {
         if (data == true) {
 
             $('#username-info').addClass('error').removeClass('success').html('Username is aldready taken!');
@@ -72,7 +72,7 @@ function checkExistUsername(username) {
 
 function checkExistEmail(email) {
 
-    $.getJSON('/api/users/is-exist-email', { email }, function(data) {
+    $.getJSON('/api/users/is-exist-email', { email }, function (data) {
         if (data == true) {
             console.log(data);
             if ($('#email-info').hasClass('forgotpassword') == true) {
@@ -99,24 +99,24 @@ function checkExistEmail(email) {
 
 function replaceProducts(page) {
     let brand = [];
-    $('input[name="brand"]:checked').each(function() {
+    $('input[name="brand"]:checked').each(function () {
         brand.push(this.value);
     });
     console.log(brand);
     let color = [];
-    $('input[name="color"]:checked').each(function() {
+    $('input[name="color"]:checked').each(function () {
         color.push(this.value);
     });
     let style = [];
-    $('input[name="style"]:checked').each(function() {
+    $('input[name="style"]:checked').each(function () {
         style.push(this.value);
     });
     let material = [];
-    $('input[name="material"]:checked').each(function() {
+    $('input[name="material"]:checked').each(function () {
         material.push(this.value);
     });
     let width = [];
-    $('input[name="width"]:checked').each(function() {
+    $('input[name="width"]:checked').each(function () {
         width.push(this.value);
     });
     let sort = document.querySelector('input[name="sort"]:checked');
@@ -163,7 +163,7 @@ function replaceProducts(page) {
 
     //call server API to render products
     //đối số data truyền vào để gửi về server
-    $.getJSON('/api/users/paging', { page, category, filter, sort }, function(data) {
+    $.getJSON('/api/users/paging', { page, category, filter, sort }, function (data) {
         // // compile the template
         let template = Handlebars.compile($('#products').html());
         // // execute the compiled template and print the output to the console
@@ -192,7 +192,7 @@ function replaceComments(page, productID) {
         page = parseInt(page1);
     }
 
-    $.getJSON('/api/users/pagingComment', { page, filter }, function(data) {
+    $.getJSON('/api/users/pagingComment', { page, filter }, function (data) {
         // // compile the template
         let template = Handlebars.compile($('#comments').html());
         // // execute the compiled template and print the output to the console
@@ -208,7 +208,7 @@ function replaceComments(page, productID) {
 }
 
 function replaceCartItems() {
-    $.getJSON('/api/order/cart', {}, function(cart) {
+    $.getJSON('/api/order/cart', {}, function (cart) {
         // // compile the template
         let template = Handlebars.compile($('#cart_list_items').html());
         // // execute the compiled template and print the output to the console
@@ -251,10 +251,10 @@ function addToCart(id) {
         return;
     }
     console.log(size);
-    $.getJSON('/api/order/addcart', { id, size, width, quantity }, function(result) {
+    $.getJSON('/api/order/addcart', { id, size, width, quantity }, function (result) {
         console.log(result.count);
         console.log(result.res);
-        $("span[name='num-of-cart']").each(function() {
+        $("span[name='num-of-cart']").each(function () {
             this.innerText = result.count;
         });
         if (result.res == true) {
@@ -278,5 +278,21 @@ function removeFromCart(id) {
         let cart_html = template({ carts });
         console.log(cart_html);
         $('#cart_list_items_template').html(cart_html);
+        const subtotal = result.subtotal;
+        document.getElementById("subtotal").innerText = subtotal + " VND";
+        document.getElementById("total").innerText = subtotal + " VND";
     });
+}
+
+function checkCheckOut() {
+    const fname = document.getElementById('fname').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const towncity = document.getElementById('towncity').value;
+    const province = document.getElementById('province').value;
+    console.log(fname);
+    if (fname == '' || phone == '' || address == '' || towncity == '' || province == '') {
+        alert("Please fill out all '*' input");
+        return false;
+    }
 }
