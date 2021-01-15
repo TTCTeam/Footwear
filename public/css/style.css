@@ -9965,7 +9965,7 @@ h5,
 
 .colorlib-nav ul {
     padding: 0;
-    margin: 20px 0 0 -12px;
+    margin: 15px 0 0 -12px;
 }
 
 .colorlib-nav ul li {
@@ -10004,7 +10004,7 @@ h5,
 }
 
 .colorlib-nav ul li.has-dropdown .dropdown {
-    width: 140px;
+    width: 160px;
     -webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
@@ -10012,7 +10012,7 @@ h5,
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 0;
     text-align: left;
     background: #000;

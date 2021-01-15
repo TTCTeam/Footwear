@@ -119,6 +119,7 @@ exports.productsPaging = async(req, res, next) => {
     }
 
     filter.name = { $regex: searchName, $options: "$i" };
+    filter.delete = false;
 
     const nPerPage = 9;
 
@@ -137,10 +138,10 @@ exports.productsPaging = async(req, res, next) => {
     });
 
     var limit = (totalPage > 5) ? 5 : totalPage;
-    //console.log(limit);
+
     let n = parseInt(pageNumber / limit);
     let page = [];
-    console.log(n);
+
     let mid = (pageNumber % limit == 0) ? limit : (pageNumber - n * limit);
     for (let i = 0; i < mid; i++) {
         if (pageNumber % limit == 0) {
