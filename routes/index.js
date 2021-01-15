@@ -18,6 +18,16 @@ function loggedIn(req, res, next) {
         res.redirect('/users/login');
     }
 }
+
+function loggedInWithoutActive(req, res, next) {
+    if (req.isAuthenticated()) {
+
+        return next();
+
+    } else {
+        res.redirect('/users/login');
+    }
+}
 router.get('/', footweawrController.index);
 router.get('/about', footweawrController.about);
 router.get('/contact', footweawrController.contact);
@@ -40,9 +50,9 @@ router.post('/forgotpassword', accountController.resetPasswword);
 
 // router.post('/forgotpasswprd/auth', accountController.resetPasswword);
 
-router.get('/change-password', loggedIn, function(req, res, next) {
+router.get('/change-password', loggedInWithoutActive, function(req, res, next) {
     res.render('user/change_password', { title: 'Footwear | Change Password' });
 });
 
-router.post('/change-password', loggedIn, accountController.updatePassword);
+router.post('/change-password', loggedInWithoutActive, accountController.updatePassword);
 module.exports = router;

@@ -56,7 +56,7 @@ function loadPagination(pageNumber, limit, totalPage) {
 }
 exports.index = async(req, res, next) => {
     //Get footwear from model
-    const footwears = await footwearModel.list();
+    const footwears = await footwearModel.listBestSeller();
     console.log(footwears);
     //footwears.cover_arr = [];
     footwears.forEach(element => {

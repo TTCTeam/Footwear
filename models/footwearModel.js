@@ -6,6 +6,13 @@ exports.list = async() => {
     }).toArray();
     return product;
 }
+exports.listBestSeller = async() => {
+    const productCollection = db().collection('Procduct');
+    const product = await productCollection.find({
+        delete: false
+    }).sort({ sold: -1 }).limit(6).toArray();
+    return product;
+}
 
 exports.paging = async(filter, pageNumber, nPerPage, sort) => {
 
