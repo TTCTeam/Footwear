@@ -1,6 +1,7 @@
 const { ObjectID } = require('mongodb');
 const bcrypt = require('bcrypt');
 const { db } = require('../dal/db');
+const assert = require('assert');
 
 exports.isEmailExist = async(email) => {
     const accountCollection = db().collection('Account');

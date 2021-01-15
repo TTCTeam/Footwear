@@ -243,7 +243,7 @@ exports.activeUser = async(req, res, next) => {
         const result = await accountModel.updateStatus(account._id, "actived");
         res.locals.user = result;
         console.log(result);
-        res.redirect('/cart');
+        res.redirect('/order/cart');
     } else {
         res.render('user/active', { title: 'Active account', message: "Code vừa nhập không chính xác." });
     }
