@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var footwearRouter = require('./routes/footwears');
 var detailRouter = require('./routes/productdetail');
+var orderRouter = require('./routes/order');
 
 const usersApiRouter = require('./routes/api/user_api');
 const orderApiRouter = require('./routes/api/order_api');
@@ -44,14 +45,6 @@ app.use(function(req, res, next) {
     res.locals.user = req.user;
     next();
 });
-//Routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/footwears', footwearRouter);
-
-app.use('/footwears', detailRouter);
-
-//Route API
 
 function loggedIn(req, res, next) {
     if (req.isAuthenticated()) {
@@ -67,8 +60,18 @@ function loggedIn(req, res, next) {
     }
 }
 
+//Routes
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/footwears', footwearRouter);
+app.use('/order', loggedIn, orderRouter);
+
+app.use('/footwears', detailRouter);
+
+//Route API
+
 app.use('/api/users', usersApiRouter);
-app.use('/api/order', loggedIn, orderApiRouter);
+app.use('/api/order', orderApiRouter);
 
 
 // catch 404 and forward to error handler

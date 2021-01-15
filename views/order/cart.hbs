@@ -66,7 +66,8 @@
                         <div class="one-eight text-center">
                             <div class="display-tc">
                                 <input type="text" id="quantity" name="quantity"
-                                    class="form-control input-number text-center" value="{{quantity}}" min="1" max="100">
+                                    class="form-control input-number text-center" value="{{quantity}}" min="1"
+                                    max="100">
                             </div>
                         </div>
                         <div class="one-eight text-center">
@@ -102,18 +103,21 @@
                                     </div>
                                 </div>
                             </form>
-                            <input type="button" onclick="replaceCartItems()" value="test">
+                            {{!-- <input type="button" onclick="replaceCartItems()" value="test"> --}}
                         </div>
                         <div class="col-sm-4 text-center">
                             <div class="total">
                                 <div class="sub">
-                                    <p><span>Subtotal:</span> <span>$200.00</span></p>
-                                    <p><span>Delivery:</span> <span>$0.00</span></p>
-                                    <p><span>Discount:</span> <span>$45.00</span></p>
+                                    <p><span>Subtotal:</span> <span id="subtotal">{{subtotal}} VND</span></p>
+                                    <p><span>Delivery:</span> <span>0 VND</span></p>
+                                    <p><span>Discount:</span> <span>0 VND</span></p>
                                 </div>
                                 <div class="grand-total">
-                                    <p><span><strong>Total:</strong></span> <span>$450.00</span></p>
+                                    <p><span><strong>Total:</strong></span> <span id="total">{{total}} VND</span></p>
                                 </div>
+                            </div>
+                            <div>
+                                <a href="/order/checkout" class="btn btn-primary" style="margin-top: 10px;">Check Out</a>
                             </div>
                         </div>
                     </div>

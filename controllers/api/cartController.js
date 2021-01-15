@@ -1,4 +1,4 @@
-const cartModel = require('../../models/cartModel');
+const cartModel = require('../../models/orderModel');
 const { ObjectID } = require('mongodb');
 
 exports.cart = async (req, res, next) => {

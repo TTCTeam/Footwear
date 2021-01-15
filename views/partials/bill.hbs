@@ -1,0 +1,35 @@
+<div id="bill_list_items_template">
+    {{#each carts}}
+    <div class="product-cart d-flex" id="{{_id}}">
+        <div class="one-forth">
+            {{!-- <div class="product-img" style="background-image: url({{product.images[0]}});">
+            </div> --}}
+            <img src="{{cover_image}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+            <div class="display-tc" style="width: 85%;">
+                <h3>{{product.name}}</h3>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">{{size}}</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">{{product.price}} VND</span>
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center"
+                    value="{{quantity}}" min="1" max="100">
+            </div>
+        </div>
+        <div class="one-eight text-center">
+            <div class="display-tc">
+                <span class="price">{{intoMoney}} VND</span>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

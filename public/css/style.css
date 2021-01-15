@@ -43,9 +43,6 @@
     box-sizing: border-box;
 }
 
-label input[type="checkbox"] {
-    display: none;
-}
 
 li label {
     cursor: pointer;
